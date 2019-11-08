@@ -1,0 +1,34 @@
+PODS:
+  - Flutter (1.0.0)
+  - UMCAnalytics (6.0.2):
+    - UMCCommon
+  - UMCCommon (2.0.0)
+  - umeng_analytics_push (0.0.1):
+    - Flutter
+    - UMCAnalytics
+    - UMCCommon
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - umeng_analytics_push (from `.symlinks/plugins/umeng_analytics_push/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - UMCAnalytics
+    - UMCCommon
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  umeng_analytics_push:
+    :path: ".symlinks/plugins/umeng_analytics_push/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  UMCAnalytics: 901960ede5a8a85f208bd37689ad3e607b433930
+  UMCCommon: 79b5a614c958db367113eed5740109d9a98e1223
+  umeng_analytics_push: ece87e929e5dc7d42fe9b393a7b4035f6b52fd33
+
+PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+
+COCOAPODS: 1.6.0
