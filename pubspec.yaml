@@ -26,7 +26,7 @@ flutter:
   # adding or updating assets for this project.
   plugin:
     androidPackage: io.github.zileyuan.umeng_analytics_push
-    pluginClass: UmengAnalyticsPlugin
+    pluginClass: UmengAnalyticsPushPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

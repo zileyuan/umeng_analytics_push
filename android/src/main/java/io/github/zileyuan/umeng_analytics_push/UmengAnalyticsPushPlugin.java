@@ -6,17 +6,17 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
-/** UmengAnalyticsPlugin */
-public class UmengAnalyticsPlugin implements MethodCallHandler {
+/** UmengAnalyticsPushPlugin */
+public class UmengAnalyticsPushPlugin implements MethodCallHandler {
   private Registrar registrar;
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
     final MethodChannel channel = new MethodChannel(registrar.messenger(), "umeng_analytics_push");
-    channel.setMethodCallHandler(new UmengAnalyticsPlugin(registrar));
+    channel.setMethodCallHandler(new UmengAnalyticsPushPlugin(registrar));
   }
 
-  private UmengAnalyticsPlugin(Registrar registrar) {
+  private UmengAnalyticsPushPlugin(Registrar registrar) {
     this.registrar = registrar;
   }
 

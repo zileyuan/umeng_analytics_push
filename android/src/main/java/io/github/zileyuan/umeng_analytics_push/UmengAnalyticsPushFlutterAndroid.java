@@ -8,7 +8,7 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.message.PushAgent;
 
 
-public class UmengAnalyticsFlutterAndroid {
+public class UmengAnalyticsPushFlutterAndroid {
 
     public static void androidInit(Context context, String appKey, String channel, boolean logEnable
         String messageSecret) {
