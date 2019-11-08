@@ -1,4 +1,4 @@
-#import "UmengAnalyticsPlugin.h"
+#import "UmengAnalyticsPushPlugin.h"
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 
