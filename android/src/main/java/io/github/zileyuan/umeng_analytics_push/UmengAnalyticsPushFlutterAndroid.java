@@ -10,8 +10,8 @@ import com.umeng.message.PushAgent;
 
 public class UmengAnalyticsPushFlutterAndroid {
 
-    public static void androidInit(Context context, String appKey, String channel, boolean logEnable
-        String messageSecret) {
+    public static void androidInit(Context context, String appKey, String channel,
+                                   boolean logEnable, String messageSecret) {
         UMConfigure.setLogEnabled(logEnable);
         UMConfigure.init(context, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, messageSecret);
         if (!messageSecret.isEmpty()) {
