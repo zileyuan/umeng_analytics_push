@@ -34,7 +34,7 @@ public class UmengAnalyticsPushFlutterAndroid {
             });
             //后台进行日活统计及多维度推送的必调用方法，请务必调用
             mPushAgent.onAppStart();
-            UmengAnalyticsPushFlutterAndroid.UmengPushAgent = mPushAgent
+            UmengAnalyticsPushFlutterAndroid.UmengPushAgent = mPushAgent;
         }
     }
 
