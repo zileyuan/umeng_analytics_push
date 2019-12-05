@@ -43,39 +43,39 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
   }
 
   private void addAlias(MethodCall call, Result result) {
-    String alias = call.argument<String>("alias");
-    String type = call.argument<String>("type");
+    String alias = call.argument("alias");
+    String type = call.argument("type");
     if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.addAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "addAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "addAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
         }
       });
     }
   }
 
   private void setAlias(MethodCall call, Result result) {
-    String alias = call.argument<String>("alias");
-    String type = call.argument<String>("type");
+    String alias = call.argument("alias");
+    String type = call.argument("type");
     if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.setAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "setAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "setAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
         }
       });
     }
   }
 
   private void deleteAlias(MethodCall call, Result result) {
-    String alias = call.argument<String>("alias");
-    String type = call.argument<String>("type");
+    String alias = call.argument("alias");
+    String type = call.argument("type");
     if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.deleteAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "deleteAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "deleteAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
         }
       });
     }
