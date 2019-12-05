@@ -49,7 +49,7 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.addAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "addAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "addAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> " + message);
         }
       });
     }
@@ -62,7 +62,7 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.setAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "setAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "setAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> " + message);
         }
       });
     }
@@ -75,7 +75,7 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.deleteAlias(alias, type, new UTrack.ICallBack() {
         @Override
         public void onMessage(boolean isSuccess, String message) {
-          Log.i("umeng_push_alias", "deleteAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> ", message);
+          Log.i("umeng_push_alias", "deleteAlias：--> " + String.valueOf(isSuccess) + "; 消息：--> " + message);
         }
       });
     }
