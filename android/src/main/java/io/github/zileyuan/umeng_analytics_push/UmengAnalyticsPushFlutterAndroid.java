@@ -10,7 +10,7 @@ import com.umeng.message.PushAgent;
 
 public class UmengAnalyticsPushFlutterAndroid {
 
-    public static UmengPushAgent;
+    public static PushAgent UmengPushAgent;
 
     public static void androidInit(Context context, String appKey, String channel,
                                    boolean logEnable, String messageSecret) {
