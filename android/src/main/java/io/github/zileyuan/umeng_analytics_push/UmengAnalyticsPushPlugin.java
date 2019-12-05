@@ -5,6 +5,8 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import com.umeng.message.UTrack;
+import android.util.Log;
 
 /** UmengAnalyticsPushPlugin */
 public class UmengAnalyticsPushPlugin implements MethodCallHandler {
@@ -23,14 +25,59 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     if (call.method.equals("init")) {
-      boolean res = init(call, result);
-      result.success(res);
+      init(call, result);
+    } else if (call.method.equals("addAlias")) {
+      addAlias(call, result);
+    } else if (call.method.equals("setAlias")) {
+      setAlias(call, result);
+    } else if (call.method.equals("deleteAlias")) {
+      deleteAlias(call, result);
     } else {
       result.notImplemented();
     }
   }
 
-  private boolean init(MethodCall call, Result result) {
-    return true;
+
+
+  private void init(MethodCall call, Result result) {
+  }
+
+  private void addAlias(MethodCall call, Result result) {
+    String alias = call.argument<String>("alias");
+    String type = call.argument<String>("type");
+    if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
+      UmengAnalyticsPushFlutterAndroid.UmengPushAgent.addAlias(alias, type, new UTrack.ICallBack() {
+        @Override
+        public void onMessage(boolean isSuccess, String message) {
+          Log.i("umeng_push_alias", "addAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+        }
+      });
+    }
+  }
+
+  private void setAlias(MethodCall call, Result result) {
+    String alias = call.argument<String>("alias");
+    String type = call.argument<String>("type");
+    if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
+      UmengAnalyticsPushFlutterAndroid.UmengPushAgent.setAlias(alias, type, new UTrack.ICallBack() {
+        @Override
+        public void onMessage(boolean isSuccess, String message) {
+          Log.i("umeng_push_alias", "setAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+        }
+      });
+    }
+  }
+
+  private void deleteAlias(MethodCall call, Result result) {
+    String alias = call.argument<String>("alias");
+    String type = call.argument<String>("type");
+    if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
+      UmengAnalyticsPushFlutterAndroid.UmengPushAgent.deleteAlias(alias, type, new UTrack.ICallBack() {
+        @Override
+        public void onMessage(boolean isSuccess, String message) {
+          Log.i("umeng_push_alias", "deleteAlias：--> " + isSuccess.toString() + "; 消息：--> ", message);
+        }
+      });
+    }
   }
 }

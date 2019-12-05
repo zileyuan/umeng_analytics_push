@@ -9,7 +9,7 @@ class UmengAnalyticsPush {
   static const MethodChannel _channel =
       const MethodChannel('umeng_analytics_push');
 
-  static Future<bool> init(
+  static Future<void> init(
     String key, {
     String channel = 'NoChannel',
     bool logEnable,
@@ -25,7 +25,20 @@ class UmengAnalyticsPush {
     if (logEnable != null) args['logEnable'] = logEnable;
 
     await _channel.invokeMethod('init', args);
-    return true;
+  }
+
+  static Future<void> addAlias(String alias, String type) async {
+    Map<String, dynamic> args = {'alias': alias, 'type': type};
+    await _channel.invokeMethod('addAlias', args);
+  }
+
+  static Future<void> setAlias(String alias, String type) async {
+    Map<String, dynamic> args = {'alias': alias, 'type': type};
+    await _channel.invokeMethod('setAlias', args);
+  }
+
+  static Future<void> deleteAlias(String alias, String type) async {
+    Map<String, dynamic> args = {'alias': alias, 'type': type};
+    await _channel.invokeMethod('deleteAlias', args);
   }
 }
-

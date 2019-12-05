@@ -10,6 +10,8 @@ import com.umeng.message.PushAgent;
 
 public class UmengAnalyticsPushFlutterAndroid {
 
+    public static UmengPushAgent;
+
     public static void androidInit(Context context, String appKey, String channel,
                                    boolean logEnable, String messageSecret) {
         UMConfigure.setLogEnabled(logEnable);
@@ -22,16 +24,17 @@ public class UmengAnalyticsPushFlutterAndroid {
                 @Override
                 public void onSuccess(String deviceToken) {
                     //注册成功会返回deviceToken deviceToken是推送消息的唯一标志
-                    Log.i("umeng_push", "注册成功：deviceToken：-------->  " + deviceToken);
+                    Log.i("umeng_push_register", "注册成功：deviceToken：-------->  " + deviceToken);
 
                 }
                 @Override
                 public void onFailure(String s, String s1) {
-                    Log.e("umeng_push", "注册失败：-------->  " + "s:" + s + ",s1:" + s1);
+                    Log.e("umeng_push_register", "注册失败：-------->  " + "s:" + s + ",s1:" + s1);
                 }
             });
             //后台进行日活统计及多维度推送的必调用方法，请务必调用
             mPushAgent.onAppStart();
+            UmengAnalyticsPushFlutterAndroid.UmengPushAgent = mPushAgent
         }
     }
 
