@@ -1,6 +1,7 @@
 #import "UmengAnalyticsPushPlugin.h"
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
+#import <UMPush/UMessage.h>
 
 @implementation UmengAnalyticsPushPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
