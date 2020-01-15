@@ -2,6 +2,7 @@
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
+#import <UserNotifications/UserNotifications.h>
 
 @implementation UmengAnalyticsPushPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -37,8 +38,16 @@
   NSNumber *logEnable = call.arguments[@"logEnable"];
   if (logEnable) [UMConfigure setLogEnabled:[logEnable boolValue]];
 
-  NSString *messageSecret = call.arguments[@"messageSecret"];
-  if (!messageSecret) messageSecret = @"";
+  // Push组件基本功能配置
+  UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
+  //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
+  entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound|UMessageAuthorizationOptionAlert;
+  [UNUserNotificationCenter currentNotificationCenter].delegate=self;
+  [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity     completionHandler:^(BOOL granted, NSError * _Nullable error) {
+      if (granted) {
+      }else{
+      }
+  }];
 
 }
 
