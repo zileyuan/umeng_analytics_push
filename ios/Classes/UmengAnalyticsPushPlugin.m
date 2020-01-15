@@ -27,8 +27,6 @@
   }
 }
 
-+ (void)registerForRemoteNotificationsWithLaunchOptions:(NSDictionary *_Nullable)launchOptions Entity:(UMessageRegisterEntity *)entity completionHandler:(void (^_Nullable)(BOOL granted, NSError *__nullable error))completionHandler;
-
 - (void)init:(FlutterMethodCall *)call result:(FlutterResult)result {
   NSString *appKey = call.arguments[@"key"];
 
