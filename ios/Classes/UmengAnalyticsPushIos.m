@@ -3,6 +3,7 @@
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
 #import <UserNotifications/UserNotifications.h>
+#import <UMCommonLog/UMCommonLogHeaders.h>
 
 @implementation UmengAnalyticsPushFlutterIos
 
@@ -10,6 +11,7 @@
 
     [UMConfigure setLogEnabled:logEnabled];
     [UMConfigure initWithAppkey:appkey channel:channel];
+    NSLog(@"application init umeng ok");
     // Push组件基本功能配置
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标

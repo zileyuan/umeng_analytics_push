@@ -20,6 +20,7 @@ A new flutter plugin project.
   s.dependency 'UMCCommon'
   s.dependency 'UMCAnalytics'
   s.dependency 'UMCPush'
+  s.dependency 'UMCCommonLog'
 
   s.ios.deployment_target = '9.0'
 end
