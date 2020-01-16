@@ -24,9 +24,7 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("init")) {
-      init(call, result);
-    } else if (call.method.equals("addAlias")) {
+    if (call.method.equals("addAlias")) {
       addAlias(call, result);
     } else if (call.method.equals("setAlias")) {
       setAlias(call, result);
