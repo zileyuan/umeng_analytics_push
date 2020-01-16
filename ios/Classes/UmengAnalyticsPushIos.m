@@ -6,10 +6,10 @@
 
 @implementation UmengAnalyticsPushFlutterIos
 
-+ (void)iosInit:(NSDictionary *_Nullable)launchOptions appKey:(NSString *)appKey channel:(NSString *)channel logEnabled:(BOOL)logEnabled {
++ (void)iosInit:(NSDictionary *_Nullable)launchOptions appkey:(NSString *)appkey channel:(NSString *)channel logEnabled:(BOOL)logEnabled {
 
     [UMConfigure setLogEnabled:logEnabled];
-    [UMConfigure initWithAppkey:appKey channel:channel];
+    [UMConfigure initWithAppkey:appkey channel:channel];
     // Push组件基本功能配置
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     //type是对推送的几个参数的选择，可以选择一个或者多个。默认是三个全部打开，即：声音，弹窗，角标
