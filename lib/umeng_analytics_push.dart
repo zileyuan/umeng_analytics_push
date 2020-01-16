@@ -9,24 +9,6 @@ class UmengAnalyticsPush {
   static const MethodChannel _channel =
       const MethodChannel('umeng_analytics_push');
 
-  static Future<void> init(
-    String key, {
-    String channel = 'NoChannel',
-    bool logEnable,
-    String messageSecret,
-  }) async {
-    Map<String, dynamic> args = {
-      'key': key,
-      'deviceType': DEVICE_TYPE_PHONE,
-      'channel': channel,
-      'messageSecret': messageSecret
-    };
-
-    if (logEnable != null) args['logEnable'] = logEnable;
-
-    await _channel.invokeMethod('init', args);
-  }
-
   static Future<void> addAlias(String alias, String type) async {
     Map<String, dynamic> args = {'alias': alias, 'type': type};
     await _channel.invokeMethod('addAlias', args);

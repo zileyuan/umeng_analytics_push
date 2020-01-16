@@ -26,19 +26,6 @@
   }
 }
 
-- (void)init:(FlutterMethodCall *)call result:(FlutterResult)result {
-  NSString *appKey = call.arguments[@"key"];
-
-  NSString *channel = call.arguments[@"channel"];
-  if (!channel) channel = @"default";
-
-  [UMConfigure initWithAppkey:appKey channel:channel];
-
-  NSNumber *logEnable = call.arguments[@"logEnable"];
-  if (logEnable) [UMConfigure setLogEnabled:[logEnable boolValue]];
-
-}
-
 - (void)addAlias:(FlutterMethodCall *)call result:(FlutterResult)result {
   NSString *alias = call.arguments[@"alias"];
   NSString *type = call.arguments[@"type"];

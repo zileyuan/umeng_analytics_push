@@ -37,11 +37,6 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
     }
   }
 
-
-
-  private void init(MethodCall call, Result result) {
-  }
-
   private void addAlias(MethodCall call, Result result) {
     String alias = call.argument("alias");
     String type = call.argument("type");
