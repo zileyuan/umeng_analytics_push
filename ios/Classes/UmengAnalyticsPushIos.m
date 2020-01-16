@@ -19,7 +19,9 @@
     [UNUserNotificationCenter currentNotificationCenter].delegate=self;
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
+            NSLog(@"================= PUSH授权成功 ====================");
         }else{
+            NSLog(@"================= PUSH拒绝授权 ====================");
         }
     }];
 
