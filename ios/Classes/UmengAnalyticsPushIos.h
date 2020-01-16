@@ -2,6 +2,6 @@
 
 @interface UmengAnalyticsPushFlutterIos : NSObject
 
-- (void)iosInit:(NSDictionary *_Nullable)launchOptions appKey:(NSString *)appKey channel:(NSString *)channel logEnabled:(BOOL)logEnabled;
++ (void)iosInit:(NSDictionary *_Nullable)launchOptions appKey:(NSString *)appKey channel:(NSString *)channel logEnabled:(BOOL)logEnabled;
 
 @end

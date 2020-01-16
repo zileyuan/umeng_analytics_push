@@ -6,7 +6,7 @@
 
 @implementation UmengAnalyticsPushFlutterIos
 
-- (void)iosInit:(NSDictionary *_Nullable)launchOptions appKey:(NSString *)appKey channel:(NSString *)channel logEnabled:(BOOL)logEnabled {
++ (void)iosInit:(NSDictionary *_Nullable)launchOptions appKey:(NSString *)appKey channel:(NSString *)channel logEnabled:(BOOL)logEnabled {
 
     [UMConfigure setLogEnabled:logEnabled];
     [UMConfigure initWithAppkey:appKey channel:channel];
