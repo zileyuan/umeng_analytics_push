@@ -13,9 +13,7 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"init" isEqualToString:call.method]) {
-      [self init:call result:result];
-  } else if ([@"addAlias" isEqualToString:call.method]) {
+  if ([@"addAlias" isEqualToString:call.method]) {
       [self addAlias:call result:result];
   } else if ([@"setAlias" isEqualToString:call.method]) {
       [self setAlias:call result:result];
