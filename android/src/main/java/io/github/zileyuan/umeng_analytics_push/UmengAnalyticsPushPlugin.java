@@ -57,7 +57,7 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
       UmengAnalyticsPushFlutterAndroid.UmengPushAgent.getTagManager().deleteTags(new TagManager.TCallBack() {
         @Override
         public void onMessage(final boolean isSuccess, final ITagManager.Result result) {
-          Log.i("umeng_push_tags", "deleteTags：--> " + String.valueOf(isSuccess)
+          Log.i("umeng_push_tags", "deleteTags：--> " + String.valueOf(isSuccess));
         }
       }, tags);
     }
