@@ -13,7 +13,11 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"addAlias" isEqualToString:call.method]) {
+  if ([@"addTags" isEqualToString:call.method]) {
+      [self addTags:call result:result];
+  } else if ([@"deleteTags" isEqualToString:call.method]) {
+      [self deleteTags:call result:result];
+  } else if ([@"addAlias" isEqualToString:call.method]) {
       [self addAlias:call result:result];
   } else if ([@"setAlias" isEqualToString:call.method]) {
       [self setAlias:call result:result];
@@ -22,6 +26,20 @@
   } else {
       result(FlutterMethodNotImplemented);
   }
+}
+
+- (void)addTags:(FlutterMethodCall *)call result:(FlutterResult)result {
+  NSString *tags = call.arguments[@"tags"];
+  [UMessage addTags:@tags response:^(id  _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
+      }
+  }];
+}
+
+- (void)deleteTags:(FlutterMethodCall *)call result:(FlutterResult)result {
+  NSString *tags = call.arguments[@"tags"];
+  [UMessage deleteTags:tags response:^(id  _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
+      }
+  }];
 }
 
 - (void)addAlias:(FlutterMethodCall *)call result:(FlutterResult)result {

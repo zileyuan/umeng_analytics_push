@@ -24,7 +24,11 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("addAlias")) {
+    if (call.method.equals("addTags")) {
+      addTags(call, result);
+    } else if (call.method.equals("deleteTags")) {
+      deleteTags(call, result);
+    } else if (call.method.equals("addAlias")) {
       addAlias(call, result);
     } else if (call.method.equals("setAlias")) {
       setAlias(call, result);
@@ -32,6 +36,30 @@ public class UmengAnalyticsPushPlugin implements MethodCallHandler {
       deleteAlias(call, result);
     } else {
       result.notImplemented();
+    }
+  }
+
+  private void addTags(MethodCall call, Result result) {
+    String tags = call.argument("tags");
+    if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
+      UmengAnalyticsPushFlutterAndroid.UmengPushAgent.getTagManager().addTags(new TagManager.TCallBack() {
+        @Override
+        public void onMessage(final boolean isSuccess, final ITagManager.Result result) {
+          Log.i("umeng_push_tags", "addTags：--> " + String.valueOf(isSuccess));
+        }
+      }, tags);
+    }
+  }
+
+  private void deleteTags(MethodCall call, Result result) {
+    String tags = call.argument("tags");
+    if (UmengAnalyticsPushFlutterAndroid.UmengPushAgent != null) {
+      UmengAnalyticsPushFlutterAndroid.UmengPushAgent.getTagManager().deleteTags(new TagManager.TCallBack() {
+        @Override
+        public void onMessage(final boolean isSuccess, final ITagManager.Result result) {
+          Log.i("umeng_push_tags", "deleteTags：--> " + String.valueOf(isSuccess)
+        }
+      }, tags);
     }
   }
 

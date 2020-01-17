@@ -9,6 +9,16 @@ class UmengAnalyticsPush {
   static const MethodChannel _channel =
       const MethodChannel('umeng_analytics_push');
 
+  static Future<void> addTags(String tags) async {
+    Map<String, dynamic> args = {'tags': tags};
+    await _channel.invokeMethod('addTags', args);
+  }
+
+  static Future<void> deleteTags(String tags) async {
+    Map<String, dynamic> args = {'tags': tags};
+    await _channel.invokeMethod('deleteTags', args);
+  }
+
   static Future<void> addAlias(String alias, String type) async {
     Map<String, dynamic> args = {'alias': alias, 'type': type};
     await _channel.invokeMethod('addAlias', args);
