@@ -30,15 +30,13 @@
 
 - (void)addTags:(FlutterMethodCall *)call result:(FlutterResult)result {
   NSString *tags = call.arguments[@"tags"];
-  [UMessage addTags:@tags response:^(id  _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
-      }
+  [UMessage addTags:tags response:^(id  _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
   }];
 }
 
 - (void)deleteTags:(FlutterMethodCall *)call result:(FlutterResult)result {
   NSString *tags = call.arguments[@"tags"];
   [UMessage deleteTags:tags response:^(id  _Nonnull responseObject, NSInteger remain, NSError * _Nonnull error) {
-      }
   }];
 }
 
