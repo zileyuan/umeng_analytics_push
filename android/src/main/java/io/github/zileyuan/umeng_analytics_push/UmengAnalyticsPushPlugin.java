@@ -7,6 +7,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.umeng.message.UTrack;
 import com.umeng.message.tag.TagManager;
+import com.umeng.message.common.inter.ITagManager;
 import android.util.Log;
 
 /** UmengAnalyticsPushPlugin */
