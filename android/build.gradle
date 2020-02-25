@@ -40,4 +40,11 @@ dependencies {
     implementation 'com.umeng.umsdk:utdid:1.5.2'
     implementation 'com.umeng.umsdk:analytics:8.1.4'
     implementation 'com.umeng.umsdk:push:6.0.5'
+    implementation 'com.umeng.umsdk:alicloud-httpdns:1.2.5'
+    implementation 'com.umeng.umsdk:alicloud-utils:1.1.5'
+    implementation 'com.umeng.umsdk:alicloud_beacon:1.0.1'
+    implementation 'com.umeng.umsdk:agoo-accs:3.3.8.8-open-fix2'
+    implementation 'com.umeng.umsdk:agoo_networksdk:3.5.5'
+    implementation 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
+    implementation 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
 }
