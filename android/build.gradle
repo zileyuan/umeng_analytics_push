@@ -33,6 +33,11 @@ android {
     lintOptions {
         disable 'InvalidPackage'
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
