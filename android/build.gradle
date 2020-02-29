@@ -52,20 +52,20 @@ dependencies {
     api 'com.umeng.umsdk:agoo_networksdk:3.5.5'
     api 'com.umeng.umsdk:agoo_tlog:3.0.0.17'
     api 'com.umeng.umsdk:agoo_tnet4android:3.1.14.9'
-//    // 小米Push通道
-//    api 'com.umeng.umsdk:xiaomi-push:3.7.0'
-//    api 'com.umeng.umsdk:xiaomi-umengaccs:1.1.4'
-//    // 华为Push通道
-//    api 'com.umeng.umsdk:huawei-basetb:2.6.3.306'
-//    api 'com.umeng.umsdk:huawei-pushtb:2.6.3.306'
-//    api 'com.umeng.umsdk:huawei-umengaccs:1.2.4'
-//    // 魅族Push通道
-//    api 'com.umeng.umsdk:meizu-push:3.8.7'
-//    api 'com.umeng.umsdk:meizu-umengaccs:1.1.1'
-//    // OppoPush通道
-//    api 'com.umeng.umsdk:oppo-push:2.0.2'
-//    api 'com.umeng.umsdk:oppo-umengaccs:1.0.6'
-//    // VivoPush通道
-//    api 'com.umeng.umsdk:vivo-push:2.3.5'
-//    api 'com.umeng.umsdk:vivo-umengaccs:1.1.0'
+    // 小米Push通道
+    api 'com.umeng.umsdk:xiaomi-push:3.7.0'
+    api 'com.umeng.umsdk:xiaomi-umengaccs:1.1.4'
+    // 华为Push通道
+    api 'com.umeng.umsdk:huawei-basetb:2.6.3.306'
+    api 'com.umeng.umsdk:huawei-pushtb:2.6.3.306'
+    api 'com.umeng.umsdk:huawei-umengaccs:1.2.4'
+    // 魅族Push通道
+    api 'com.umeng.umsdk:meizu-push:3.8.7'
+    api 'com.umeng.umsdk:meizu-umengaccs:1.1.1'
+    // OppoPush通道
+    api 'com.umeng.umsdk:oppo-push:2.0.2'
+    api 'com.umeng.umsdk:oppo-umengaccs:1.0.6'
+    // VivoPush通道
+    api 'com.umeng.umsdk:vivo-push:2.3.5'
+    api 'com.umeng.umsdk:vivo-umengaccs:1.1.0'
 }
