@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +12,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    UmengAnalyticsPush.init('112233',
-        channel: 'default', logEnable: true, "334455");
   }
 
   @override
@@ -25,7 +22,6 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('UmengAnalytics on\n'),
         ),
       ),
     );
