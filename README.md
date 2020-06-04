@@ -10,7 +10,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.3
+  umeng_analytics_push: ^1.0.4
 
 # Or import through Git (choose one, Git version may be updated more timely)
 

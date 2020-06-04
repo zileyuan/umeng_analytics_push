@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- adjustment description
+- 调整说明
+
 ## 1.0.3
 
 - fix bugs
