@@ -1,6 +1,6 @@
 name: umeng_analytics_push
 description: Flutter Plugin for umeng:analytics (友盟统计) & umeng:push (友盟推送)
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/zileyuan/umeng_analytics_push
 
 environment:

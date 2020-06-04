@@ -1,6 +1,7 @@
 # 友盟分析推送Flutter插件（umeng_analytics_push）
 
-友盟API详见 [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
+- 友盟API详见 [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
+- 注意注意：以下面文档说明为准，不要参考example里面的设置
 
 ## 用法
 
@@ -104,18 +105,21 @@ import Flutter
 
 ### Flutter中使用
 
-#### 增加Alias
+#### 操作Alias
 
 ```dart
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 UmengAnalyticsPush.addAlias('1001', 'jobcode');
+UmengAnalyticsPush.setAlias('1002', 'jobcode');
+UmengAnalyticsPush.deleteAlias('1002', 'jobcode');
 ```
 
-#### 增加Tags
+#### 操作Tags
 
 ```dart
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 UmengAnalyticsPush.addTags('manager');
+UmengAnalyticsPush.deleteTags('manager');
 ```
