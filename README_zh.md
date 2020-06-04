@@ -10,7 +10,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.1
+  umeng_analytics_push: ^1.0.3
 
 # 或者通过Git导入（二选一，Git版本可能更新更加及时）
 
