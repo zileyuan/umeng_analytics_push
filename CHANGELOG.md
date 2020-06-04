@@ -1,4 +1,7 @@
-# Changelog
+## 1.0.5
+
+- adjustment description
+- 调整说明
 
 ## 1.0.4
 
