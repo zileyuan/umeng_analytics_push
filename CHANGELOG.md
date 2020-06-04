@@ -1,7 +1,4 @@
-## 0.0.6
+# 1.0.0
 
-* update some document.
-
-## 0.0.1
-
-* initial release. only init.
+- 集成基本的Umeng的Analytics分析功能
+- 集成基本的Umeng的Push推送功能（支持增加别名Alias，标签Tags功能）

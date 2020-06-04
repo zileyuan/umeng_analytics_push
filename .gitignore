@@ -9,3 +9,8 @@ build/
 .idea/
 .vscode/
 *.iml
+
+.project
+.classpath
+.flutter-plugins-dependencies
+.settings/
