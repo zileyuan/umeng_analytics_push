@@ -1,18 +1,18 @@
-# Umeng Analytics&Push Flutter Plugins（umeng_analytics_push）
+# 友盟分析推送Flutter插件（umeng_analytics_push）
 
-- Language: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
-- Umeng API: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
-- Note: The following document description shall prevail, do not refer to the settings in the example
+- 语言: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
+- 友盟API详见: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
+- 注意注意: 以下面文档说明为准，不要参考example里面的设置
 
-## Usages
+## 用法
 
-### Import
+### 导入
 
 ```yaml
 dependencies:
   umeng_analytics_push: ^1.0.1
 
-# Or import through Git (choose one, Git version may be updated more timely)
+# 或者通过Git导入（二选一，Git版本可能更新更加及时）
 
 dependencies:
   umeng_analytics_push:
@@ -20,9 +20,9 @@ dependencies:
         url: https://github.com/zileyuan/umeng_analytics_push.git
 ```
 
-### Android settings (with Kotlin example)
+### Android设置（以Kotlin示例）
 
-#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_push_id is set to empty
+#### 创建自定义FlutterApplication类作为启动类,如果不需要push功能则uemng_push_id设置为空
 
 ```kotlin
 package com.demo.umeng.app
@@ -39,7 +39,7 @@ class MyFlutterApplication: FlutterApplication() {
 }
 ```
 
-#### Modify MainActivity, add Umeng settings
+#### 修改MainActivity，增加Umeng的设置
 
 ```kotlin
 package com.demo.umeng.app
@@ -67,7 +67,7 @@ class MainActivity: FlutterActivity() {
 }
 ```
 
-#### Modify the AndroidManifest.xml file
+#### 修改AndroidManifest.xml文件
 
 ```xml
 <application
@@ -75,9 +75,9 @@ class MainActivity: FlutterActivity() {
 </application>
 ```
 
-### IOS settings (with Swift example)
+### IOS设置（以Swift示例）
 
-#### Modify AppDelegate.swift file
+#### 修改AppDelegate.swift文件
 
 ```swift
 import UIKit
@@ -93,7 +93,7 @@ import Flutter
 }
 ```
 
-#### Modify Runner-Bridging-Header.h file
+#### 修改Runner-Bridging-Header.h文件
 
 ```objectivec
 #import "GeneratedPluginRegistrant.h"
@@ -104,9 +104,9 @@ import Flutter
 #import <umeng_analytics_push/UmengAnalyticsPushIos.h>
 ```
 
-### Use in Flutter
+### Flutter中使用
 
-#### Operation Alias
+#### 操作Alias
 
 ```dart
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
@@ -116,7 +116,7 @@ UmengAnalyticsPush.setAlias('1002', 'jobcode');
 UmengAnalyticsPush.deleteAlias('1002', 'jobcode');
 ```
 
-#### Operation Tags
+#### 操作Tags
 
 ```dart
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
