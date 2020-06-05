@@ -9,15 +9,19 @@ typedef void OnPushCustomMessageCallback(String message);
 class UmengAnalyticsPush {
   /// Umeng device of phone
   static const DEVICE_TYPE_PHONE = 1;
+
   /// Umeng device of box
   static const DEVICE_TYPE_BOX = 2;
 
   /// Communication MethodChannel
-  static const MethodChannel _methodChannel = const MethodChannel('umeng_analytics_push');
-  static const EventChannel _eventChannel = const EventChannel('umeng_analytics_push/stream');
+  static const MethodChannel _methodChannel =
+      const MethodChannel('umeng_analytics_push');
+  static const EventChannel _eventChannel =
+      const EventChannel('umeng_analytics_push/stream');
 
   /// Add a push custom message callback function by [onPushCustomMessageCallback]
-  static addPushCustomMessageCallback(OnPushCustomMessageCallback onPushCustomMessageCallback) {
+  static addPushCustomMessageCallback(
+      OnPushCustomMessageCallback onPushCustomMessageCallback) {
     _eventChannel.receiveBroadcastStream().listen(onPushCustomMessageCallback);
   }
 
