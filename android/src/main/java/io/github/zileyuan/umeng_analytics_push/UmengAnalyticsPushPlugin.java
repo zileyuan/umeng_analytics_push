@@ -2,15 +2,18 @@ package io.github.zileyuan.umeng_analytics_push;
 
 import androidx.annotation.NonNull;
 
+import android.content.Context;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import com.umeng.message.UTrack;
 import com.umeng.message.tag.TagManager;
 import com.umeng.message.common.inter.ITagManager;
+import com.umeng.analytics.MobclickAgent;
 import android.util.Log;
 
 /** UmengAnalyticsPushPlugin */
@@ -19,17 +22,37 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
   ///
   /// This local reference serves to register the plugin with the Flutter Engine and unregister it
   /// when the Flutter Engine is detached from the Activity
-  private MethodChannel channel;
+  public static MethodChannel methodChannel;
+  public static EventChannel eventChannel;
+  public static EventChannel.EventSink eventSink;
+  private static Context context;
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-    channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "umeng_analytics_push");
-    channel.setMethodCallHandler(this);
+    context = flutterPluginBinding.getApplicationContext();
+    methodChannel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "umeng_analytics_push");
+    methodChannel.setMethodCallHandler(this);
+    eventChannel = new EventChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "umeng_analytics_push/stream");
+    eventChannel.setStreamHandler(
+      new EventChannel.StreamHandler() {
+        @Override
+        public void onListen(Object args, final EventChannel.EventSink events) {
+            Log.i("eventChannel", "adding listener");
+            eventSink = events;
+        }
+        @Override
+        public void onCancel(Object args) {
+            Log.i("eventChannel", "cancelling listener");
+            eventSink = null;
+        }
+      }
+    );
   }
 
   @Override
   public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    channel.setMethodCallHandler(null);
+    methodChannel.setMethodCallHandler(null);
+    eventChannel.setStreamHandler(null);
   }
 
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -42,8 +65,24 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
   // depending on the user's project. onAttachedToEngine or registerWith must both be defined
   // in the same class.
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "umeng_analytics_push");
-    channel.setMethodCallHandler(new UmengAnalyticsPushPlugin());
+    context = registrar.context();
+    methodChannel = new MethodChannel(registrar.messenger(), "umeng_analytics_push");
+    methodChannel.setMethodCallHandler(new UmengAnalyticsPushPlugin());
+    eventChannel = new EventChannel(registrar.messenger(), "umeng_analytics_push/stream");
+    eventChannel.setStreamHandler(
+      new EventChannel.StreamHandler() {
+        @Override
+        public void onListen(Object args, final EventChannel.EventSink events) {
+            Log.i("eventChannel", "adding listener");
+            eventSink = events;
+        }
+        @Override
+        public void onCancel(Object args) {
+            Log.i("eventChannel", "cancelling listener");
+            eventSink = null;
+        }
+      }
+    );
   }
 
   @Override
@@ -58,9 +97,31 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
       setAlias(call, result);
     } else if (call.method.equals("deleteAlias")) {
       deleteAlias(call, result);
+    } else if (call.method.equals("pageStart")) {
+      pageStart(call, result);
+    } else if (call.method.equals("pageEnd")) {
+      pageEnd(call, result);
+    } else if (call.method.equals("event")) {
+      event(call, result);
     } else {
       result.notImplemented();
     }
+  }
+
+  private void event(MethodCall call, Result result) {
+    String eventId = call.argument("eventId");
+    String label = call.argument("label");
+    MobclickAgent.onEvent(context, eventId, label);
+  }
+
+  private void pageStart(MethodCall call, Result result) {
+    String pageName = call.argument("pageName");
+    MobclickAgent.onPageStart(pageName);
+  }
+
+  private void pageEnd(MethodCall call, Result result) {
+    String pageName = call.argument("pageName");
+    MobclickAgent.onPageEnd(pageName);
   }
 
   private void addTags(MethodCall call, Result result) {

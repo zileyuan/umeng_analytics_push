@@ -10,7 +10,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.5
+  umeng_analytics_push: ^1.0.6
 
 # Or import through Git (choose one, Git version may be updated more timely)
 
@@ -22,7 +22,7 @@ dependencies:
 
 ### Android settings (with Kotlin example)
 
-#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_push_id is set to empty
+#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_push_id is set to empty, If you do not need to customize Push click, set the last parameter to false
 
 ```kotlin
 package com.demo.umeng.app
@@ -34,7 +34,7 @@ class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
         UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_id", "default",
-                false, "uemng_push_id")
+                false, "uemng_push_id", false)
     }
 }
 ```
@@ -77,7 +77,7 @@ class MainActivity: FlutterActivity() {
 
 ### IOS settings (with Swift example)
 
-#### Modify AppDelegate.swift file
+#### Modify AppDelegate.swift file, If Push function is not needed then pushEnabled is set to false
 
 ```swift
 import UIKit
@@ -87,8 +87,16 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_id", channel:"appstore", logEnabled:false);
+        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_id", channel:"appstore", logEnabled:false, pushEnabled:true);
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+
+    // If you need to handle custom Push clicks, use the following code
+    @available(iOS 10.0, *)
+    override func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
+        let userInfo = response.notification.request.content.userInfo
+        UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
+        completionHandler()
     }
 }
 ```
@@ -123,4 +131,31 @@ import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 UmengAnalyticsPush.addTags('manager');
 UmengAnalyticsPush.deleteTags('manager');
+```
+
+#### Page buried point operation
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.pageStart('memberPage');
+UmengAnalyticsPush.pageEnd('memberPage');
+```
+
+#### Custom event
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.event('customEvent', '1000');
+```
+
+#### Custom click Push response(Turn on the switch when initialization is required)
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.addPushCustomMessageCallback((custom) {
+  print(custom);
+});
 ```

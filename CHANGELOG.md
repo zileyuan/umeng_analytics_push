@@ -1,3 +1,12 @@
+## 1.0.6
+
+- Add page buried point events (startPage, endPage)
+- 增加页面埋点事件（startPage，endPage）
+- Add custom event (event)
+- 增加自定义事件（event）
+- Add Push custom response
+- 增加Push的自定义响应
+
 ## 1.0.5
 
 - adjustment description

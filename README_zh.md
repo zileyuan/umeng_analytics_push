@@ -10,7 +10,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.5
+  umeng_analytics_push: ^1.0.6
 
 # 或者通过Git导入（二选一，Git版本可能更新更加及时）
 
@@ -22,7 +22,7 @@ dependencies:
 
 ### Android设置（以Kotlin示例）
 
-#### 创建自定义FlutterApplication类作为启动类,如果不需要push功能则uemng_push_id设置为空
+#### 创建自定义FlutterApplication类作为启动类，如果不需要push功能则uemng_push_id设置为空，如果不需要自定义Push点击，则设置最后一个参数为false
 
 ```kotlin
 package com.demo.umeng.app
@@ -34,7 +34,7 @@ class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
         UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_id", "default",
-                false, "uemng_push_id")
+                false, "uemng_push_id", false)
     }
 }
 ```
@@ -77,7 +77,7 @@ class MainActivity: FlutterActivity() {
 
 ### IOS设置（以Swift示例）
 
-#### 修改AppDelegate.swift文件
+#### 修改AppDelegate.swift文件，如果不需要Push功能则pushEnabled设置为false
 
 ```swift
 import UIKit
@@ -87,8 +87,16 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_id", channel:"appstore", logEnabled:false);
+        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_id", channel:"appstore", logEnabled:false, pushEnabled:true);
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+
+    // 如果需要处理自定义Push点击，用下面代码
+    @available(iOS 10.0, *)
+    override func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
+        let userInfo = response.notification.request.content.userInfo
+        UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
+        completionHandler()
     }
 }
 ```
@@ -123,4 +131,31 @@ import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 UmengAnalyticsPush.addTags('manager');
 UmengAnalyticsPush.deleteTags('manager');
+```
+
+#### 页面埋点操作
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.pageStart('memberPage');
+UmengAnalyticsPush.pageEnd('memberPage');
+```
+
+#### 自定义事件
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.event('customEvent', '1000');
+```
+
+#### 自定义点击Push响应（需要初始化时候打开开关）
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.addPushCustomMessageCallback((custom) {
+  print(custom);
+});
 ```

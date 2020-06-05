@@ -3,13 +3,28 @@
 #import <UMAnalytics/MobClick.h>
 #import <UMPush/UMessage.h>
 
+FlutterMethodChannel* methodChannel;
+FlutterEventChannel* eventChannel;
+FlutterEventSink _eventSink;
 @implementation UmengAnalyticsPushPlugin
+
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FlutterMethodChannel* channel = [FlutterMethodChannel
-      methodChannelWithName:@"umeng_analytics_push"
-            binaryMessenger:[registrar messenger]];
+  methodChannel = [FlutterMethodChannel methodChannelWithName:@"umeng_analytics_push" binaryMessenger:[registrar messenger]];
   UmengAnalyticsPushPlugin* instance = [[UmengAnalyticsPushPlugin alloc] init];
-  [registrar addMethodCallDelegate:instance channel:channel];
+  [registrar addMethodCallDelegate:instance channel:methodChannel];
+
+  eventChannel = [FlutterEventChannel eventChannelWithName:@"umeng_analytics_push/stream" binaryMessenger:[registrar messenger]];
+  [eventChannel setStreamHandler:self];
+}
+
+- (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {
+  _eventSink = eventSink;
+  return nil;
+}
+
+- (FlutterError*)onCancelWithArguments:(id)arguments {
+  _eventSink = nil;
+  return nil;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
@@ -23,9 +38,35 @@
       [self setAlias:call result:result];
   } else if ([@"deleteAlias" isEqualToString:call.method]) {
       [self deleteAlias:call result:result];
+  } else if ([@"pageStart" isEqualToString:call.method]) {
+      [self pageStart:call result:result];
+  } else if ([@"pageEnd" isEqualToString:call.method]) {
+      [self pageEnd:call result:result];
+  } else if ([@"event" isEqualToString:call.method]) {
+      [self event:call result:result];
   } else {
       result(FlutterMethodNotImplemented);
   }
+}
+
+- (void)event:(FlutterMethodCall*)call result:(FlutterResult)result {
+    NSString* eventId = call.arguments[@"eventId"];
+    NSString* label = call.arguments[@"label"];
+    if (label == nil) {
+        [MobClick event:eventId];
+    } else {
+        [MobClick event:eventId label:label];
+    }
+}
+
+- (void)pageStart:(FlutterMethodCall*)call result:(FlutterResult)result {
+  NSString* pageName = call.arguments[@"pageName"];
+  [MobClick beginLogPageView:pageName];
+}
+
+- (void)pageEnd:(FlutterMethodCall*)call result:(FlutterResult)result {
+  NSString* pageName = call.arguments[@"pageName"];
+  [MobClick endLogPageView:pageName];
 }
 
 - (void)addTags:(FlutterMethodCall *)call result:(FlutterResult)result {
