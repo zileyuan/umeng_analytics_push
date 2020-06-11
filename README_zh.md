@@ -33,8 +33,8 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_id", "default",
-                false, "uemng_push_id", false)
+        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
+                false, "uemng_message_secret", false)
     }
 }
 ```
@@ -87,13 +87,13 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_id", channel:"appstore", logEnabled:false, pushEnabled:true);
+        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_key", channel:"appstore", logEnabled:false, pushEnabled:true);
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
     // 如果需要处理自定义Push点击，用下面代码
     @available(iOS 10.0, *)
-    override func userNotificationCenter(center: UNUserNotificationCenter, didReceiveNotificationResponse response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void){
+    override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
         completionHandler()

@@ -1,3 +1,10 @@
+## 1.0.7
+
+- Update the document, some nouns are consistent with Umeng
+- 更新文档，一些名词和友盟一致
+- Corrected the userNotificationCenter writing of the custom response message IOS, thanks [gaoyong06](https://github.com/gaoyong06)
+- 修正自定义响应消息IOS的userNotificationCenter写法，感谢[gaoyong06](https://github.com/gaoyong06)
+
 ## 1.0.6
 
 - Add page buried point events (startPage, endPage)
