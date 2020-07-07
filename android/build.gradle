@@ -44,7 +44,7 @@ dependencies {
     api 'com.umeng.umsdk:common:2.2.2'
     api 'com.umeng.umsdk:utdid:1.5.2'
     api 'com.umeng.umsdk:analytics:8.1.6'
-    api 'com.umeng.umsdk:push:6.1.0'
+    api 'com.umeng.umsdk:push:6.0.5'
     api 'com.umeng.umsdk:alicloud-httpdns:1.2.5'
     api 'com.umeng.umsdk:alicloud-utils:1.1.5'
     api 'com.umeng.umsdk:alicloud_beacon:1.0.1'
