@@ -1,3 +1,8 @@
+## 1.0.10
+
+- Solve the problem that the new version SDK of Umeng does not match each other
+- 解决友盟新版本SDK相互不匹配的问题
+
 ## 1.0.9
 
 - Solve the new version SDK compilation error of Umeng

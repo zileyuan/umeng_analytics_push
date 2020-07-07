@@ -1,6 +1,6 @@
 name: umeng_analytics_push
 description: Umeng Analytics&Push Flutter Plugins, Data analysis and message push for Android and IOS applications.
-version: 1.0.9
+version: 1.0.10
 homepage: https://github.com/zileyuan/umeng_analytics_push
 
 environment:
