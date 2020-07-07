@@ -1,3 +1,8 @@
+## 1.0.9
+
+- Solve the new version SDK compilation error of Umeng
+- 解决友盟新版本SDK编译错误
+
 ## 1.0.8
 
 - Update the SDK version that Umeng depends on
