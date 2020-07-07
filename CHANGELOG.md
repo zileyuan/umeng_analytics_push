@@ -1,3 +1,8 @@
+## 1.0.8
+
+- Update the SDK version that Umeng depends on
+- 更新友盟依赖的SDK版本
+
 ## 1.0.7
 
 - Update the document, some nouns are consistent with Umeng

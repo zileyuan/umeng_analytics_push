@@ -1,4 +1,4 @@
-# 友盟分析推送Flutter插件（umeng_analytics_push）
+# 友盟分析推送Flutter插件（umeng_analytics_push） [![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
 
 - 语言: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
 - 友盟API详见: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
@@ -8,9 +8,11 @@
 
 ### 导入
 
+[![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
+
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.7
+  umeng_analytics_push: ^x.x.x #最新版本见上方
 
 # 或者通过Git导入（二选一，Git版本可能更新更加及时）
 

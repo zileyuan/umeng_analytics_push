@@ -1,4 +1,4 @@
-# Umeng Analytics&Push Flutter Plugins（umeng_analytics_push）
+# Umeng Analytics&Push Flutter Plugins（umeng_analytics_push） [![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
 
 - Language: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
 - Umeng API: [umeng:analytics](http://mobile.umeng.com/analytics) & [umeng:push](http://mobile.umeng.com/push)
@@ -8,9 +8,11 @@
 
 ### Import
 
+[![pub package](https://img.shields.io/pub/v/umeng_analytics_push)](https://pub.flutter-io.cn/packages/umeng_analytics_push)
+
 ```yaml
 dependencies:
-  umeng_analytics_push: ^1.0.7
+  umeng_analytics_push: ^x.x.x #最新版本见上方
 
 # Or import through Git (choose one, Git version may be updated more timely)
 
