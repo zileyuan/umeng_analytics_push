@@ -1,3 +1,10 @@
+## 1.0.12
+
+- Solve the problem of the compilation error of the new version IOS SDK of Umeng
+- 解决友盟新版本IOS SDK编译错误的问题
+- Removal of Umeng's security optional components may lead to conflicts with other SDKs
+- 去除友盟的安全可选组件，可能导致和别的SDK冲突
+
 ## 1.0.11
 
 - Solve the problem that the new version SDK of Umeng does not match each other

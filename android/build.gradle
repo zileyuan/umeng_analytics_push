@@ -42,7 +42,6 @@ android {
 
 dependencies {
     api 'com.umeng.umsdk:common:2.2.2'
-    api 'com.umeng.umsdk:utdid:1.5.2'
     api 'com.umeng.umsdk:analytics:8.1.6'
     api 'com.umeng.umsdk:push:6.0.5'
     api 'com.umeng.umsdk:alicloud-httpdns:1.2.5'
