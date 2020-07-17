@@ -1,3 +1,8 @@
+## 1.0.14
+
+- Plus the utdid component on the Android side of Umeng, there is no need to remove it under special circumstances.
+- 加上友盟Android端的utdid组件，有特殊情况不需要的自行去除
+
 ## 1.0.13
 
 - Solve insecure connections in README.MD, add points, :)
