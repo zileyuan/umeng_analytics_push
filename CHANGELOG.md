@@ -1,3 +1,8 @@
+## 1.0.13
+
+- Solve insecure connections in README.MD, add points, :)
+- 解决README.MD中的不安全连接，加点评分，:)
+
 ## 1.0.12
 
 - Solve the problem of the compilation error of the new version IOS SDK of Umeng
