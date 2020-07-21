@@ -123,34 +123,32 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushPlugin
 
 class MainActivity: FlutterActivity() {
     var handler: Handler = Handler(Looper.myLooper())
-    var custom: String = ""
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         GeneratedPluginRegistrant.registerWith(flutterEngine);
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
-            if (getIntent().getExtras() != null) {
-                custom = getIntent().getExtras().getString("custom")
-            }
-        }
+    override fun onNewIntent(intent: Intent) {
+        // Actively update and save the intent every time you go back to the front desk, and then you can get the latest intent
+        setIntent(intent);
+        super.onNewIntent(intent);
     }
 
     override fun onResume() {
         super.onResume()
         UmengAnalyticsPushFlutterAndroid.androidOnResume(this)
         if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
-            //To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
-            handler.postDelayed(object : Runnable {
-                override fun run() {
-                    if (custom != "") {
-                        UmengAnalyticsPushPlugin.eventSink.success(custom)
-                        custom = ""
-                    }
+            if (getIntent().getExtras() != null) {
+                var custom = getIntent().getExtras().getString("custom")
+                if (custom != "") {
+                    // To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
+                    handler.postDelayed(object : Runnable {
+                        override fun run() {
+                            UmengAnalyticsPushPlugin.eventSink.success(custom)
+                        }
+                    }, 5000)
                 }
-            }, 5000)
+            }
         }
     }
 
