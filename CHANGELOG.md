@@ -1,3 +1,8 @@
+## 1.1.02
+
+- Add CustomMessage condition control, modify the document
+- 加入CustomMessage条件控制，修改文档
+
 ## 1.1.01
 
 - Umeng upgraded to the latest version of SDK (including IOS and Android), and there was no compiling problem in the test

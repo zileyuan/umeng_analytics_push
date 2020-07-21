@@ -20,9 +20,11 @@ import org.android.agoo.vivo.VivoRegister;
 public class UmengAnalyticsPushFlutterAndroid {
 
     public static PushAgent UmengPushAgent;
+    public static boolean CustomMessage;
 
     public static void androidInit(Context context, String appKey, String channel,
                                    boolean logEnable, String messageSecret, boolean customMessage) {
+        CustomMessage = customMessage;
         UMConfigure.setLogEnabled(logEnable);
         UMConfigure.init(context, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, messageSecret);
         if (!messageSecret.isEmpty()) {

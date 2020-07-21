@@ -131,23 +131,27 @@ class MainActivity: FlutterActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (getIntent().getExtras() != null) {
-            custom = getIntent().getExtras().getString("custom")
+        if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
+            if (getIntent().getExtras() != null) {
+                custom = getIntent().getExtras().getString("custom")
+            }
         }
     }
 
     override fun onResume() {
         super.onResume()
         UmengAnalyticsPushFlutterAndroid.androidOnResume(this)
-        //To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                if (custom != "") {
-                    UmengAnalyticsPushPlugin.eventSink.success(custom)
-                    custom = ""
+        if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
+            //To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
+            handler.postDelayed(object : Runnable {
+                override fun run() {
+                    if (custom != "") {
+                        UmengAnalyticsPushPlugin.eventSink.success(custom)
+                        custom = ""
+                    }
                 }
-            }
-        }, 5000)
+            }, 5000)
+        }
     }
 
     override fun onPause() {
