@@ -159,6 +159,30 @@
         </provider>
         <!-- 以下为基本配置信息，需要自行添加至您的AndroidManifest文件中 end-->
 
+        <receiver android:name="io.github.zileyuan.umeng_analytics_push.SimpleMeizuPushReceiver">
+            <intent-filter>
+                <!-- 接收push消息 -->
+                <action android:name="com.meizu.flyme.push.intent.MESSAGE" />
+                <!-- 接收register消息 -->
+                <action android:name="com.meizu.flyme.push.intent.REGISTER.FEEDBACK" />
+                <!-- 接收unregister消息-->
+                <action android:name="com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK" />
+                <!-- 兼容低版本Flyme3推送服务配置 -->
+                <action android:name="com.meizu.c2dm.intent.REGISTRATION" />
+                <action android:name="com.meizu.c2dm.intent.RECEIVE" />
+                <category android:name="${applicationId}"></category>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="io.github.zileyuan.umeng_analytics_push.OfflineNotifyClickActivity"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            <intent-filter>
+                <category android:name="${applicationId}" />
+            </intent-filter>
+        </activity>
 
     </application>
 </manifest>

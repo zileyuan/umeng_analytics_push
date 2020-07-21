@@ -1,3 +1,10 @@
+## 1.1.01
+
+- Umeng upgraded to the latest version of SDK (including IOS and Android), and there was no compiling problem in the test
+- 友盟升级到最新版SDK(包含IOS和Android)，亲测没有编译等问题
+- Added vendor Push channel support (Xiaomi, Huawei, Oppo, Vivo, Meizu), test Xiaomi can accept offline Push
+- 加入厂商Push通道支持(Xiaomi，Huawei，Oppo，Vivo，Meizu)，亲测Xiaomi可以接受离线Push
+
 ## 1.0.14
 
 - Plus the utdid component on the Android side of Umeng, there is no need to remove it under special circumstances.

@@ -1,6 +1,6 @@
 #import "UmengAnalyticsPushPlugin.h"
 #import <UMCommon/UMCommon.h>
-#import <UMAnalytics/MobClick.h>
+#import <UMCommon/MobClick.h>
 #import <UMPush/UMessage.h>
 
 FlutterMethodChannel* methodChannel;
