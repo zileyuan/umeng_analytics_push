@@ -14,7 +14,7 @@ FlutterEventSink _eventSink;
   [registrar addMethodCallDelegate:instance channel:methodChannel];
 
   eventChannel = [FlutterEventChannel eventChannelWithName:@"umeng_analytics_push/stream" binaryMessenger:[registrar messenger]];
-  [eventChannel setStreamHandler:self];
+  [eventChannel setStreamHandler:instance];
 }
 
 - (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {

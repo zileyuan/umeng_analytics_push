@@ -1,3 +1,8 @@
+## 1.1.03
+
+- Solve the problem of Crash monitoring under IOS
+- 解决IOS下监听会Crash的问题
+
 ## 1.1.02
 
 - Add CustomMessage condition control, modify the document
