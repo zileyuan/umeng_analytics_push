@@ -46,74 +46,9 @@ class MyFlutterApplication: FlutterApplication() {
 ```kotlin
 package com.demo.umeng.app
 
-import androidx.annotation.NonNull;
-import io.flutter.embedding.android.FlutterActivity
-import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.plugins.GeneratedPluginRegistrant
-import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
-
-class MainActivity: FlutterActivity() {
-  override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-    GeneratedPluginRegistrant.registerWith(flutterEngine);
-  }
-
-  override fun onResume() {
-    super.onResume()
-    UmengAnalyticsPushFlutterAndroid.androidOnResume(this)
-  }
-
-  override fun onPause() {
-    super.onPause()
-    UmengAnalyticsPushFlutterAndroid.androidOnPause(this)
-  }
-}
-```
-
-#### 修改AndroidManifest.xml文件
-
-```xml
-<application
-  android:name="com.demo.umeng.app.MyFlutterApplication">
-</application>
-```
-
-#### 加入厂商通道, 详见官方文档 [umeng:push:vendor](https://developer.umeng.com/docs/67966/detail/98589)
-
-##### 修改MyFlutterApplication
-
-```kotlin
-package com.demo.umeng.app
-
-import io.flutter.app.FlutterApplication
-import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
-
-class MyFlutterApplication: FlutterApplication() {
-    override fun onCreate() {
-        super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret", false)
-        // Register Xiaomi Push (optional)
-        UmengAnalyticsPushFlutterAndroid.registerXiaomi(this, "xiaomi_app_id", "xiaomi_app_key")
-        // Register Huawei Push (optional, need add other infomation in AndroidManifest.xml)
-        UmengAnalyticsPushFlutterAndroid.registerHuawei(this)
-        // Register Oppo Push (optional)
-        UmengAnalyticsPushFlutterAndroid.registerOppo(this, "oppo_app_key", "oppo_app_secret")
-        // Register Vivo Push (optional, need add other infomation in AndroidManifest.xml)
-        UmengAnalyticsPushFlutterAndroid.registerVivo(this)
-        // Register Meizu Push (optional)
-        UmengAnalyticsPushFlutterAndroid.registerMeizu(this, "meizu_app_id", "meizu_app_key")
-    }
-}
-```
-
-##### 修改MainActivity
-
-```kotlin
-package com.demo.umeng.app
-
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.content.Intent
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
@@ -155,6 +90,43 @@ class MainActivity: FlutterActivity() {
     override fun onPause() {
         super.onPause()
         UmengAnalyticsPushFlutterAndroid.androidOnPause(this)
+    }
+}
+```
+
+#### 修改AndroidManifest.xml文件
+
+```xml
+<application
+  android:name="com.demo.umeng.app.MyFlutterApplication">
+</application>
+```
+
+#### 加入厂商通道, 详见官方文档 [umeng:push:vendor](https://developer.umeng.com/docs/67966/detail/98589)
+
+##### 修改MyFlutterApplication
+
+```kotlin
+package com.demo.umeng.app
+
+import io.flutter.app.FlutterApplication
+import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
+
+class MyFlutterApplication: FlutterApplication() {
+    override fun onCreate() {
+        super.onCreate();
+        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
+                false, "uemng_message_secret", false)
+        // Register Xiaomi Push (optional)
+        UmengAnalyticsPushFlutterAndroid.registerXiaomi(this, "xiaomi_app_id", "xiaomi_app_key")
+        // Register Huawei Push (optional, need add other infomation in AndroidManifest.xml)
+        UmengAnalyticsPushFlutterAndroid.registerHuawei(this)
+        // Register Oppo Push (optional)
+        UmengAnalyticsPushFlutterAndroid.registerOppo(this, "oppo_app_key", "oppo_app_secret")
+        // Register Vivo Push (optional, need add other infomation in AndroidManifest.xml)
+        UmengAnalyticsPushFlutterAndroid.registerVivo(this)
+        // Register Meizu Push (optional)
+        UmengAnalyticsPushFlutterAndroid.registerMeizu(this, "meizu_app_id", "meizu_app_key")
     }
 }
 ```

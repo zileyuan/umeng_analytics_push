@@ -1,3 +1,13 @@
+## 1.1.06
+
+- Update usage document
+- 更新使用文档
+
+## 1.1.05
+
+- Update usage document
+- 更新使用文档
+
 ## 1.1.04
 
 - Update usage document
