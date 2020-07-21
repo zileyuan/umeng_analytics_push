@@ -75,7 +75,7 @@ class MainActivity: FlutterActivity() {
         if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
             if (getIntent().getExtras() != null) {
                 var custom = getIntent().getExtras().getString("custom")
-                if (custom != "") {
+                if (custom != null && custom != "") {
                     // To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
                     handler.postDelayed(object : Runnable {
                         override fun run() {

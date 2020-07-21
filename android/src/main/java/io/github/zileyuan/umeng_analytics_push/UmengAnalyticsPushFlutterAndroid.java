@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.Activity;
 import android.util.Log;
 import android.content.Context;
+import android.content.Intent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.analytics.MobclickAgent;
@@ -56,6 +57,7 @@ public class UmengAnalyticsPushFlutterAndroid {
                     @Override
                     public void dealWithCustomAction(Context context, UMessage msg) {
                         Log.i("dealWithCustomAction --------->  ", msg.custom);
+                        rouseMainActivity(context);
                         UmengAnalyticsPushPlugin.eventSink.success(msg.custom);
                     }
                 };
@@ -93,5 +95,10 @@ public class UmengAnalyticsPushFlutterAndroid {
 
     public static void registerMeizu(Context context, String appId, String appKey) {
         MeizuRegister.register(context, appId, appKey);
+    }
+
+    public static void rouseMainActivity(Context context) {
+        Intent intent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        context.startActivity(intent);
     }
 }

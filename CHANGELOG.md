@@ -1,3 +1,8 @@
+## 1.1.07
+
+- When customizing the message, click on the message to wake up the background activity (do not create a new activity)
+- 自定义消息的时候，点击消息可以唤醒后台的Activity（不创建新的Activity）
+
 ## 1.1.06
 
 - Update usage document
