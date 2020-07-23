@@ -1,3 +1,8 @@
+## 1.2.03
+
+- Format code to improve score
+- 格式化代码，提高评分
+
 ## 1.2.02
 
 - Modified variable naming

@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:umeng_analytics_push/message_model.dart';
 
-/// custom message callback function type define
+/// Message callback function type define
 typedef void OnPushMessageCallback(MessageModel message);
 
 /// Main Class
@@ -22,8 +22,7 @@ class UmengAnalyticsPush {
       const EventChannel('umeng_analytics_push/stream');
 
   /// Add a push message callback function by [onPushMessageCallback]
-  static addPushMessageCallback(
-      OnPushMessageCallback onPushMessageCallback) {
+  static addPushMessageCallback(OnPushMessageCallback onPushMessageCallback) {
     _eventChannel.receiveBroadcastStream().listen((data) {
       var model = MessageModel.fromJson(json.decode(data));
       onPushMessageCallback(model);

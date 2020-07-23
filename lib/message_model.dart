@@ -39,13 +39,13 @@ class MessageBodyModel {
         text = json["text"];
 
   Map<String, dynamic> toJson() => {
-    'after_open': afterOpen,
-    'ticker': ticker,
-    'custom': custom,
-    'title': title,
-    'play_sound': playSound,
-    'play_lights': playLights,
-    'play_vibrate': playVibrate,
-    'text': text,
-  };
+        'after_open': afterOpen,
+        'ticker': ticker,
+        'custom': custom,
+        'title': title,
+        'play_sound': playSound,
+        'play_lights': playLights,
+        'play_vibrate': playVibrate,
+        'text': text,
+      };
 }
