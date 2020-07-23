@@ -1,3 +1,14 @@
+## 1.2.01
+
+- Please note that 1.2 version and 1.1 version are not compatible
+- 1.2版本和1.1版本不兼容，请注意
+- Removed the initialized customMessage parameter
+- 去除了初始化的customMessage参数
+- Do not process Custom messages separately, process all message types in a unified manner, please refer to the documentation for details
+- 不单独处理Custom消息，统一处理所有消息类型，详细参见说明文档
+- Added Dart's MessageModel class, which is used to convert the message body sent over. For details, please refer to the documentation
+- 增加了Dart的MessageModel类，用于转换发送过来的消息体，详细使用参见说明文档
+
 ## 1.1.07
 
 - When customizing the message, click on the message to wake up the background activity (do not create a new activity)

@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:umeng_analytics_push/message_model.dart';
 
 /// custom message callback function type define
-typedef void OnPushCustomMessageCallback(String message);
+typedef void OnPushMessageCallback(MessageModel message);
 
 /// Main Class
 class UmengAnalyticsPush {
@@ -19,10 +21,13 @@ class UmengAnalyticsPush {
   static const EventChannel _eventChannel =
       const EventChannel('umeng_analytics_push/stream');
 
-  /// Add a push custom message callback function by [onPushCustomMessageCallback]
-  static addPushCustomMessageCallback(
-      OnPushCustomMessageCallback onPushCustomMessageCallback) {
-    _eventChannel.receiveBroadcastStream().listen(onPushCustomMessageCallback);
+  /// Add a push message callback function by [onPushMessageCallback]
+  static addPushMessageCallback(
+      OnPushMessageCallback onPushMessageCallback) {
+    _eventChannel.receiveBroadcastStream().listen((data) {
+      var model = MessageModel.fromJson(json.decode(data));
+      onPushMessageCallback(model);
+    });
   }
 
   /// Add a tags by [tags]

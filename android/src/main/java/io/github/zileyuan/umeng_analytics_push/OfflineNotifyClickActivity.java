@@ -42,7 +42,7 @@ public class OfflineNotifyClickActivity extends UmengNotifyClickActivity {
             newIntent.setComponent(mComponentName);
             newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             Bundle mExtras = new Bundle();
-            mExtras.putString("custom", body);
+            mExtras.putString("message", body);
             newIntent.putExtras(mExtras);
             startActivity(newIntent);
             finish();

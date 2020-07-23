@@ -36,7 +36,7 @@ class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
         UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret", false)
+                false, "uemng_message_secret")
     }
 }
 ```
@@ -72,17 +72,15 @@ class MainActivity: FlutterActivity() {
     override fun onResume() {
         super.onResume()
         UmengAnalyticsPushFlutterAndroid.androidOnResume(this)
-        if (UmengAnalyticsPushFlutterAndroid.CustomMessage) {
-            if (getIntent().getExtras() != null) {
-                var custom = getIntent().getExtras().getString("custom")
-                if (custom != null && custom != "") {
-                    // To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
-                    handler.postDelayed(object : Runnable {
-                        override fun run() {
-                            UmengAnalyticsPushPlugin.eventSink.success(custom)
-                        }
-                    }, 5000)
-                }
+        if (getIntent().getExtras() != null) {
+            var message = getIntent().getExtras().getString("message")
+            if (message != null && message != "") {
+                // To start the interface, wait for the engine to load, and send it to the interface with a delay of 5 seconds
+                handler.postDelayed(object : Runnable {
+                    override fun run() {
+                        UmengAnalyticsPushPlugin.eventSink.success(message)
+                    }
+                }, 5000)
             }
         }
     }
@@ -157,7 +155,7 @@ class MyFlutterApplication: FlutterApplication() {
 
 ```js
 "mipush": true
-"mi_activity":"io.github.zileyuan.umeng_analytics_push.OfflineNotifyClickActivity"  
+"mi_activity": "io.github.zileyuan.umeng_analytics_push.OfflineNotifyClickActivity"  
 ```
 
 ### IOS设置（以Swift示例）
@@ -176,11 +174,11 @@ import Flutter
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
-    // 如果需要处理自定义Push点击，用下面代码
+    // 如果需要处理Push点击，用下面代码
     @available(iOS 10.0, *)
     override func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        UmengAnalyticsPushFlutterIos.handleCustomMessagePush(userInfo)
+        UmengAnalyticsPushFlutterIos.handleMessagePush(userInfo)
         completionHandler()
     }
 }
@@ -198,6 +196,17 @@ import Flutter
 ```
 
 ### Flutter中使用
+
+#### 点击Push响应
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+import 'package:umeng_analytics_push/message_model.dart';
+
+UmengAnalyticsPush.addPushMessageCallback((MessageModel message) {
+  print("UmengAnalyticsPush Message ======> $message");
+});
+```
 
 #### 操作Alias
 
@@ -233,14 +242,4 @@ UmengAnalyticsPush.pageEnd('memberPage');
 import 'package:umeng_analytics_push/umeng_analytics_push.dart';
 
 UmengAnalyticsPush.event('customEvent', '1000');
-```
-
-#### 自定义点击Push响应（需要初始化时候打开开关）
-
-```dart
-import 'package:umeng_analytics_push/umeng_analytics_push.dart';
-
-UmengAnalyticsPush.addPushCustomMessageCallback((custom) {
-  print(custom);
-});
 ```

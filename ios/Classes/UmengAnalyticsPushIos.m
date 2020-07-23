@@ -31,15 +31,10 @@ extern FlutterEventSink _eventSink;
 }
 
 // 处理友盟推送
-+ (void)handleCustomMessagePush:(NSDictionary *)userInfo {
++ (void)handleMessagePush:(NSDictionary *)userInfo {
     if (userInfo)
     {
-        if ([userInfo objectForKey:@"custom_message"])
-        {
-            NSString *custom = userInfo[@"custom_message"];
-            //通知到Flutter
-            _eventSink(custom);
-        }
+        _eventSink(userInfo);
     }
 }
 

@@ -21,11 +21,9 @@ import org.android.agoo.vivo.VivoRegister;
 public class UmengAnalyticsPushFlutterAndroid {
 
     public static PushAgent UmengPushAgent;
-    public static boolean CustomMessage;
 
     public static void androidInit(Context context, String appKey, String channel,
-                                   boolean logEnable, String messageSecret, boolean customMessage) {
-        CustomMessage = customMessage;
+                                   boolean logEnable, String messageSecret) {
         UMConfigure.setLogEnabled(logEnable);
         UMConfigure.init(context, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, messageSecret);
         if (!messageSecret.isEmpty()) {
@@ -52,17 +50,22 @@ public class UmengAnalyticsPushFlutterAndroid {
                     Log.e("umeng_push_register", "注册失败：-------->  " + "s:" + s + ",s1:" + s1);
                 }
             });
-            if (customMessage) {
-                UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler() {
-                    @Override
-                    public void dealWithCustomAction(Context context, UMessage msg) {
-                        Log.i("dealWithCustomAction --------->  ", msg.custom);
-                        rouseMainActivity(context);
-                        UmengAnalyticsPushPlugin.eventSink.success(msg.custom);
-                    }
-                };
-                mPushAgent.setNotificationClickHandler(notificationClickHandler);
-            }
+            UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler() {
+                @Override
+                public void handleMessage(Context context, UMessage msg) {
+                    super.handleMessage(context, msg);
+                    rouseMainActivity(context);
+                    UmengAnalyticsPushPlugin.eventSink.success(msg.getRaw().toString());
+                }
+//                    @Override
+//                    public void dealWithCustomAction(Context context, UMessage msg) {
+//                        Log.i("dealWithCustomAction --------->  ", msg.custom);
+//                        this.launchApp(var1, var2);
+//                        rouseMainActivity(context);
+////                        UmengAnalyticsPushPlugin.eventSink.success(msg.getRaw().toString());
+//                    }
+            };
+            mPushAgent.setNotificationClickHandler(notificationClickHandler);
             //后台进行日活统计及多维度推送的必调用方法，请务必调用
             mPushAgent.onAppStart();
             UmengAnalyticsPushFlutterAndroid.UmengPushAgent = mPushAgent;
