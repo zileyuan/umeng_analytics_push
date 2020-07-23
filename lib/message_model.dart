@@ -1,51 +1,51 @@
 class MessageModel {
-  String display_type;
+  String displayType;
   Map<String, dynamic> extra;
   MessageBodyModel body;
-  String msg_id;
+  String msgId;
 
   MessageModel.fromJson(Map<String, dynamic> json)
-      : display_type = json["display_type"],
+      : displayType = json["display_type"],
         extra = json["extra"],
         body = MessageBodyModel.fromJson(json["body"]),
-        msg_id = json["msg_id"];
+        msgId = json["msg_id"];
 
   Map<String, dynamic> toJson() => {
-        'display_type': display_type,
+        'display_type': displayType,
         'extra': extra,
         'body': body.toJson(),
-        'msg_id': msg_id,
+        'msg_id': msgId,
       };
 }
 
 class MessageBodyModel {
-  String after_open;
+  String afterOpen;
   String ticker;
   String custom;
   String title;
-  String play_sound;
-  String play_lights;
-  String play_vibrate;
+  String playSound;
+  String playLights;
+  String playVibrate;
   String text;
 
   MessageBodyModel.fromJson(Map<String, dynamic> json)
-      : after_open = json["after_open"],
+      : afterOpen = json["after_open"],
         ticker = json["ticker"],
         custom = json["custom"],
         title = json["title"],
-        play_sound = json["play_sound"],
-        play_lights = json["play_lights"],
-        play_vibrate = json["play_vibrate"],
+        playSound = json["play_sound"],
+        playLights = json["play_lights"],
+        playVibrate = json["play_vibrate"],
         text = json["text"];
 
   Map<String, dynamic> toJson() => {
-    'after_open': after_open,
+    'after_open': afterOpen,
     'ticker': ticker,
     'custom': custom,
     'title': title,
-    'play_sound': play_sound,
-    'play_lights': play_lights,
-    'play_vibrate': play_vibrate,
+    'play_sound': playSound,
+    'play_lights': playLights,
+    'play_vibrate': playVibrate,
     'text': text,
   };
 }

@@ -1,3 +1,8 @@
+## 1.2.02
+
+- Modified variable naming
+- 修正变量命名
+
 ## 1.2.01
 
 - Please note that 1.2 version and 1.1 version are not compatible
