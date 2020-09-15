@@ -44,6 +44,8 @@ FlutterEventSink _eventSink;
       [self pageEnd:call result:result];
   } else if ([@"event" isEqualToString:call.method]) {
       [self event:call result:result];
+  } else if ([@"deviceToken" isEqualToString:call.method]) {
+    [self deviceToken:call result:result];
   } else {
       result(FlutterMethodNotImplemented);
   }
@@ -57,6 +59,12 @@ FlutterEventSink _eventSink;
     } else {
         [MobClick event:eventId label:label];
     }
+}
+
+- (void)deviceToken:(FlutterMethodCall*)call result:(FlutterResult)result {
+  NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];  
+  NSString *device_token = [userDefault stringForKey: @"push_device_token"] ;
+  result(device_token);
 }
 
 - (void)pageStart:(FlutterMethodCall*)call result:(FlutterResult)result {
