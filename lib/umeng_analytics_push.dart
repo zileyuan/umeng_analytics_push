@@ -29,6 +29,12 @@ class UmengAnalyticsPush {
     });
   }
 
+  /// get DeviceToken [DeviceToken]
+  static Future<String> deviceToken() async {
+    Map<String, dynamic> args = {};
+    return _methodChannel.invokeMethod('deviceToken', args);
+  }
+
   /// Add a tags by [tags]
   static Future<void> addTags(String tags) async {
     Map<String, dynamic> args = {'tags': tags};
