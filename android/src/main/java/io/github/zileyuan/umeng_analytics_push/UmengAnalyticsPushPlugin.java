@@ -10,7 +10,13 @@ import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+
+import com.umeng.message.IUmengRegisterCallback;
+import com.umeng.message.MsgConstant;
+import com.umeng.message.PushAgent;
 import com.umeng.message.UTrack;
+import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.entity.UMessage;
 import com.umeng.message.tag.TagManager;
 import com.umeng.message.common.inter.ITagManager;
 import com.umeng.analytics.MobclickAgent;
@@ -26,6 +32,7 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
   public static EventChannel eventChannel;
   public static EventChannel.EventSink eventSink;
   private static Context context;
+  public static String deviceToken;
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -103,6 +110,8 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
       pageEnd(call, result);
     } else if (call.method.equals("event")) {
       event(call, result);
+    } else if (call.method.equals("deviceToken")) {
+      deviceToken(call, result);
     } else {
       result.notImplemented();
     }
@@ -186,4 +195,12 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
       });
     }
   }
+
+
+  private void deviceToken(MethodCall call, Result result) {
+    String deviceToken = UmengAnalyticsPushFlutterAndroid.UmengPushAgent.getRegistrationId();
+
+    result.success(deviceToken);
+  }
+
 }
