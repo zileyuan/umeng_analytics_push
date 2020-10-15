@@ -14,3 +14,4 @@ build/
 .classpath
 .flutter-plugins-dependencies
 .settings/
+.symlinks/
