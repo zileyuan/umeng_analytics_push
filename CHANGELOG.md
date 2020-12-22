@@ -1,3 +1,13 @@
+## 1.2.05
+
+- Upgrade the analytics of Umeng to 9.3.3, upgrade the push to 6.2.0, and upgrade some dependent SDKs
+- 升级友盟统计到9.3.3，升级推送到6.2.0，以及一些依赖的SDK升级
+
+## 1.2.04
+
+- Support obtaining deviceToken
+- 支持获取deviceToken
+
 ## 1.2.03
 
 - Format code to improve score
