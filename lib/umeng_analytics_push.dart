@@ -30,7 +30,7 @@ class UmengAnalyticsPush {
   }
 
   /// get DeviceToken [DeviceToken]
-  static Future<String> deviceToken() async {
+  static Future<String?> deviceToken() async {
     Map<String, dynamic> args = {};
     return _methodChannel.invokeMethod('deviceToken', args);
   }
@@ -78,7 +78,7 @@ class UmengAnalyticsPush {
   }
 
   /// Record custom event for [eventId] with [label]
-  static Future<void> event(String eventId, {String label}) async {
+  static Future<void> event(String eventId, {String? label}) async {
     Map<String, dynamic> args = {'eventId': eventId};
     if (label != null && label.isNotEmpty) {
       args['label'] = label;
