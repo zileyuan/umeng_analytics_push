@@ -1,3 +1,8 @@
+## 1.2.06
+
+- Upgrade the Youmeng SDK and update the Maven URL
+- 升级友盟SDK，更新Maven地址
+
 ## 1.2.05
 
 - Upgrade the analytics of Umeng to 9.3.3, upgrade the push to 6.2.0, and upgrade some dependent SDKs
