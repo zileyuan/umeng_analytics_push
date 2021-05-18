@@ -12,7 +12,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^x.x.x #最新版本见上方
+  umeng_analytics_push: ^x.x.x #最新版本见上方，插件1.x支持flutter1.x，插件2.x支持flutter2.x
 
 # 或者通过Git导入（二选一，Git版本可能更新更加及时）
 

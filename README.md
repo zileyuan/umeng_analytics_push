@@ -12,7 +12,7 @@
 
 ```yaml
 dependencies:
-  umeng_analytics_push: ^x.x.x #最新版本见上方
+  umeng_analytics_push: ^x.x.x #The latest version is shown above, plugin1.x supports flutter1.x, plugin2.x supports flutter2.x
 
 # Or import through Git (choose one, Git version may be updated more timely)
 

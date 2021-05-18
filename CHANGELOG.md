@@ -1,3 +1,13 @@
+## 2.0.2
+
+- Upgrade the Youmeng SDK and update the Maven URL
+- 升级友盟SDK，更新Maven地址
+
+## 2.0.1
+
+- Upgrade the analytics of Umeng to 9.3.7, upgrade the push to 6.3.2, and upgrade some dependent SDKs
+- 升级友盟统计到9.3.7，升级推送到6.3.2，以及一些依赖的SDK升级
+
 ## 2.0.0
 
 - Support null safety
