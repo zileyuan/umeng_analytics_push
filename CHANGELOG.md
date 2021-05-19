@@ -1,3 +1,8 @@
+## 2.0.3
+
+- Add url and activity elements in MessageBodyModel
+- 增加MessageBodyModel里面url和activity元素
+
 ## 2.0.2
 
 - Upgrade the Youmeng SDK and update the Maven URL
