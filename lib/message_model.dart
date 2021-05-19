@@ -22,6 +22,8 @@ class MessageBodyModel {
   String afterOpen;
   String ticker;
   String custom;
+  String url;
+  String activity;
   String title;
   String playSound;
   String playLights;
@@ -32,6 +34,8 @@ class MessageBodyModel {
       : afterOpen = json["after_open"],
         ticker = json["ticker"],
         custom = json["custom"],
+        url = json["url"],
+        activity = json["activity"],
         title = json["title"],
         playSound = json["play_sound"],
         playLights = json["play_lights"],
@@ -42,6 +46,8 @@ class MessageBodyModel {
         'after_open': afterOpen,
         'ticker': ticker,
         'custom': custom,
+        'url': url,
+        'activity': activity,
         'title': title,
         'play_sound': playSound,
         'play_lights': playLights,
