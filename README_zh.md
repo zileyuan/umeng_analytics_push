@@ -24,7 +24,7 @@ dependencies:
 
 ### Android设置（以Kotlin示例）
 
-#### 创建自定义FlutterApplication类作为启动类，如果不需要push功能则uemng_push_id设置为空，如果不需要自定义Push点击，则设置最后一个参数为false
+#### 创建自定义FlutterApplication类作为启动类，如果不需要push功能则uemng_message_secret设置为空
 
 ```kotlin
 package com.demo.umeng.app

@@ -1,3 +1,8 @@
+## 2.0.4
+
+- Update the description error in the document
+- 更新文档里面的说明错误
+
 ## 2.0.3
 
 - Add url and activity elements in MessageBodyModel
