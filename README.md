@@ -24,7 +24,7 @@ dependencies:
 
 ### Android settings (with Kotlin example)
 
-#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_push_id is set to empty, If you do not need to customize Push click, set the last parameter to false
+#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_message_secret is set to empty
 
 ```kotlin
 package com.demo.umeng.app
