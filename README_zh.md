@@ -2,7 +2,8 @@
 
 - 语言: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
 - 友盟API详见: [umeng:analytics](https://mobile.umeng.com/analytics) & [umeng:push](https://mobile.umeng.com/push)
-- 注意注意: 以下面文档说明为准，不要参考example里面的设置
+- 提示: 从v2.1.0版本开始支持友盟《合规指南》[安卓](https://developer.umeng.com/docs/119267/detail/182050) [IOS](https://developer.umeng.com/docs/119267/detail/185919)，同时做了便于集成的适当调整。
+- 注意: 以下面文档说明为准，不要参考example里面的设置
 
 ## 用法
 
@@ -22,9 +23,9 @@ dependencies:
         url: https://github.com/zileyuan/umeng_analytics_push.git
 ```
 
-### Android设置（以Kotlin示例）
+### Android预处理设置（以Kotlin示例）
 
-#### 创建自定义FlutterApplication类作为启动类，如果不需要push功能则uemng_message_secret设置为空
+#### 创建自定义FlutterApplication类作为启动类，如果没有push功能使用的uemng_message_secret，则设置为null或者""
 
 ```kotlin
 package com.demo.umeng.app
@@ -35,8 +36,7 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret")
+        UmengAnalyticsPushFlutterAndroid.androidPreInit(this, "uemng_app_key", "channel", "uemng_message_secret")
     }
 }
 ```
@@ -113,8 +113,7 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret", false)
+        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "channel", "uemng_message_secret")
         // Register Xiaomi Push (optional)
         UmengAnalyticsPushFlutterAndroid.registerXiaomi(this, "xiaomi_app_id", "xiaomi_app_key")
         // Register Huawei Push (optional, need add other infomation in AndroidManifest.xml)
@@ -158,9 +157,9 @@ class MyFlutterApplication: FlutterApplication() {
 "mi_activity": "io.github.zileyuan.umeng_analytics_push.OfflineNotifyClickActivity"  
 ```
 
-### IOS设置（以Swift示例）
+### IOS预处理设置（以Swift示例）
 
-#### 修改AppDelegate.swift文件，如果不需要Push功能则pushEnabled设置为false
+#### 修改AppDelegate.swift文件
 
 ```swift
 import UIKit
@@ -170,7 +169,7 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_key", channel:"appstore", logEnabled:false, pushEnabled:true);
+        UmengAnalyticsPushFlutterIos.iosPreInit(launchOptions, appkey:"uemng_app_key", channel:"appstore");
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
@@ -196,6 +195,14 @@ import Flutter
 ```
 
 ### Flutter中使用
+
+#### 初始化Umeng，根据《合规指南》，在同意《隐私政策》后调用，两个参数开关，一个是否log，一个是否push
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.initUmeng(false, true);
+```
 
 #### 点击Push响应
 

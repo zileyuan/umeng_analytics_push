@@ -94,7 +94,10 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("addTags")) {
+
+    if (call.method.equals("initUmeng")) {
+      initUmeng(call, result);
+    } else if (call.method.equals("addTags")) {
       addTags(call, result);
     } else if (call.method.equals("deleteTags")) {
       deleteTags(call, result);
@@ -199,8 +202,13 @@ public class UmengAnalyticsPushPlugin implements FlutterPlugin, MethodCallHandle
 
   private void deviceToken(MethodCall call, Result result) {
     String deviceToken = UmengAnalyticsPushFlutterAndroid.UmengPushAgent.getRegistrationId();
-
     result.success(deviceToken);
+  }
+
+  private void initUmeng(MethodCall call, Result result) {
+    boolean logEnabled = call.argument("logEnabled");
+    boolean pushEnabled = call.argument("pushEnabled");
+    UmengAnalyticsPushFlutterAndroid.androidInit(logEnabled, pushEnabled);
   }
 
 }

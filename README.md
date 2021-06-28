@@ -2,6 +2,7 @@
 
 - Language: [English](https://github.com/zileyuan/umeng_analytics_push) | [中文简体](https://github.com/zileyuan/umeng_analytics_push/blob/master/README_zh.md)
 - Umeng API: [umeng:analytics](https://mobile.umeng.com/analytics) & [umeng:push](https://mobile.umeng.com/push)
+- Tip: From v2.1.0 supported Umeng "Compliance Guide" [Android](https://developer.umeng.com/docs/119267/detail/182050)  [IOS](https://developer.umeng.com/docs/119267/detail/185919), and made appropriate adjustments to facilitate integration.
 - Note: The following document description shall prevail, do not refer to the settings in the example
 
 ## Usages
@@ -22,9 +23,9 @@ dependencies:
         url: https://github.com/zileyuan/umeng_analytics_push.git
 ```
 
-### Android settings (with Kotlin example)
+### Android pretreatment settings (with Kotlin example)
 
-#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_message_secret is set to empty
+#### Create a custom FlutterApplication class as the startup class, if the push function is not needed, uemng_message_secret is set to null or ""
 
 ```kotlin
 package com.demo.umeng.app
@@ -35,8 +36,7 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret")
+        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "channel", "uemng_message_secret")
     }
 }
 ```
@@ -113,8 +113,7 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "default",
-                false, "uemng_message_secret", false)
+        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "channel", "uemng_message_secret")
         // Register Xiaomi Push (optional)
         UmengAnalyticsPushFlutterAndroid.registerXiaomi(this, "xiaomi_app_id", "xiaomi_app_key")
         // Register Huawei Push (optional, need add other infomation in AndroidManifest.xml)
@@ -158,9 +157,9 @@ class MyFlutterApplication: FlutterApplication() {
 "mi_activity": "io.github.zileyuan.umeng_analytics_push.OfflineNotifyClickActivity"  
 ```
 
-### IOS settings (with Swift example)
+### IOS pretreatment settings (with Swift example)
 
-#### Modify AppDelegate.swift file, If Push function is not needed then pushEnabled is set to false
+#### Modify AppDelegate.swift file
 
 ```swift
 import UIKit
@@ -196,6 +195,14 @@ import Flutter
 ```
 
 ### Use in Flutter
+
+#### Initialize Umeng, call it after agreeing to the "Privacy Policy" according to the "Compliance Guide", two parameter switches, one is log, the other is push
+
+```dart
+import 'package:umeng_analytics_push/umeng_analytics_push.dart';
+
+UmengAnalyticsPush.initUmeng(false, true);
+```
 
 #### Click Push response
 

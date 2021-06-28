@@ -85,4 +85,10 @@ class UmengAnalyticsPush {
     }
     await _methodChannel.invokeMethod('event', args);
   }
+
+  /// init Umeng by [logEnabled], [pushEnabled] and option [androidMessageSecret]
+  static Future<void> initUmeng(bool logEnabled, bool pushEnabled) async {
+    Map<String, dynamic> args = {'logEnabled': logEnabled, 'pushEnabled': pushEnabled};
+    await _methodChannel.invokeMethod('initUmeng', args);
+  }
 }

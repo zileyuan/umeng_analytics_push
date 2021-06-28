@@ -1,4 +1,5 @@
 #import "UmengAnalyticsPushPlugin.h"
+#import "UmengAnalyticsPushIos.h"
 #import <UMCommon/UMCommon.h>
 #import <UMCommon/MobClick.h>
 #import <UMPush/UMessage.h>
@@ -28,7 +29,9 @@ FlutterEventSink _eventSink;
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-  if ([@"addTags" isEqualToString:call.method]) {
+  if ([@"initUmeng" isEqualToString:call.method]) {
+      [self initUmeng:call result:result];
+  } else if ([@"addTags" isEqualToString:call.method]) {
       [self addTags:call result:result];
   } else if ([@"deleteTags" isEqualToString:call.method]) {
       [self deleteTags:call result:result];
@@ -108,6 +111,12 @@ FlutterEventSink _eventSink;
   NSString *type = call.arguments[@"type"];
   [UMessage removeAlias:alias type:type response:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
   }];
+}
+
+- (void)initUmeng:(FlutterMethodCall *)call result:(FlutterResult)result {
+  BOOL logEnabled = call.arguments[@"logEnabled"];
+  BOOL pushEnabled = call.arguments[@"logEnabled"];
+  [UmengAnalyticsPushFlutterIos iosInit:logEnabled pushEnabled:pushEnabled];
 }
 
 @end

@@ -21,12 +21,29 @@ import org.android.agoo.vivo.VivoRegister;
 public class UmengAnalyticsPushFlutterAndroid {
 
     public static PushAgent UmengPushAgent;
+    public static Context context;
+    public static String appkey;
+    public static String channel;
+    public static String messageSecret;
 
-    public static void androidInit(Context context, String appKey, String channel,
-                                   boolean logEnable, String messageSecret) {
-        UMConfigure.setLogEnabled(logEnable);
-        UMConfigure.init(context, appKey, channel, UMConfigure.DEVICE_TYPE_PHONE, messageSecret);
-        if (!messageSecret.isEmpty()) {
+    public static void androidPreInit(Context context, String appkey, String channel, String messageSecret) {
+        // SDK预初始化函数不会采集设备信息，也不会向友盟后台上报数据。
+        // preInit预初始化函数耗时极少，不会影响App首次冷启动用户体验
+        UmengAnalyticsPushFlutterAndroid.context = context;
+        UmengAnalyticsPushFlutterAndroid.appkey = appkey;
+        UmengAnalyticsPushFlutterAndroid.channel = channel;
+        UmengAnalyticsPushFlutterAndroid.messageSecret = messageSecret;
+        UMConfigure.preInit(context, appkey, channel);
+    }
+
+    public static void androidInit(boolean logEnabled, boolean pushEnabled) {
+        Context context = UmengAnalyticsPushFlutterAndroid.context;
+        String appkey = UmengAnalyticsPushFlutterAndroid.appkey;
+        String channel = UmengAnalyticsPushFlutterAndroid.channel;
+        String messageSecret = UmengAnalyticsPushFlutterAndroid.messageSecret;
+        UMConfigure.setLogEnabled(logEnabled);
+        UMConfigure.init(context, appkey, channel, UMConfigure.DEVICE_TYPE_PHONE, messageSecret);
+        if (pushEnabled && messageSecret != null && !messageSecret.isEmpty()) {
             //获取消息推送代理示例
             PushAgent mPushAgent = PushAgent.getInstance(context);
             //设置客户端允许声音提醒
@@ -70,6 +87,8 @@ public class UmengAnalyticsPushFlutterAndroid {
             mPushAgent.onAppStart();
             UmengAnalyticsPushFlutterAndroid.UmengPushAgent = mPushAgent;
         }
+        //选择AUTO自动采集模式（必须！）
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
     }
 
     public static void androidOnResume(Context context) {

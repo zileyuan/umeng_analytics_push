@@ -1,3 +1,8 @@
+## 2.1.0
+
+- Support Umeng's "Compliance Guide"
+- 支持Umeng的《合规指南》
+
 ## 2.0.4
 
 - Update the description error in the document
