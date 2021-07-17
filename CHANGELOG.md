@@ -1,3 +1,8 @@
+## 2.1.1
+
+- Fix the bug of IOS push switch, thanks [BadReese](https://github.com/BadReese)
+- 修正IOS推送开关的错误，感谢[BadReese](https://github.com/BadReese)
+
 ## 2.1.0
 
 - Support Umeng's "Compliance Guide"

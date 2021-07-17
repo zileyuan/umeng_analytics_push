@@ -114,8 +114,8 @@ FlutterEventSink _eventSink;
 }
 
 - (void)initUmeng:(FlutterMethodCall *)call result:(FlutterResult)result {
-  BOOL logEnabled = call.arguments[@"logEnabled"];
-  BOOL pushEnabled = call.arguments[@"logEnabled"];
+  BOOL logEnabled = [call.arguments[@"logEnabled"] boolValue];
+  BOOL pushEnabled = [call.arguments[@"pushEnabled"] boolValue];
   [UmengAnalyticsPushFlutterIos iosInit:logEnabled pushEnabled:pushEnabled];
 }
 
