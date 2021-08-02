@@ -36,7 +36,7 @@ import io.github.zileyuan.umeng_analytics_push.UmengAnalyticsPushFlutterAndroid
 class MyFlutterApplication: FlutterApplication() {
     override fun onCreate() {
         super.onCreate();
-        UmengAnalyticsPushFlutterAndroid.androidInit(this, "uemng_app_key", "channel", "uemng_message_secret")
+        UmengAnalyticsPushFlutterAndroid.androidPreInit(this, "uemng_app_key", "channel", "uemng_message_secret")
     }
 }
 ```
