@@ -169,7 +169,7 @@ import Flutter
 @objc class AppDelegate: FlutterAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GeneratedPluginRegistrant.register(with: self)
-        UmengAnalyticsPushFlutterIos.iosInit(launchOptions, appkey:"uemng_app_key", channel:"appstore", logEnabled:false, pushEnabled:true);
+        UmengAnalyticsPushFlutterIos.iosPreInit(launchOptions, appkey:"uemng_app_key", channel:"appstore");
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 
