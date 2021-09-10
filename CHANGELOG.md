@@ -1,3 +1,8 @@
+## 2.1.2
+
+- Fix some code sample errors in README, thanks [wasabia](https://github.com/wasabia)
+- 修正README中的一些代码示例错误，感谢[wasabia](https://github.com/wasabia)
+
 ## 2.1.1
 
 - Fix the bug of IOS push switch, thanks [BadReese](https://github.com/BadReese)
