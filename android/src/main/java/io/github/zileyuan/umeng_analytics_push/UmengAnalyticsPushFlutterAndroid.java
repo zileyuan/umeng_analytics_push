@@ -46,6 +46,7 @@ public class UmengAnalyticsPushFlutterAndroid {
         if (pushEnabled && messageSecret != null && !messageSecret.isEmpty()) {
             //获取消息推送代理示例
             PushAgent mPushAgent = PushAgent.getInstance(context);
+            mPushAgent.setResourcePackageName(BuildConfig.LIBRARY_PACKAGE_NAME);
             //设置客户端允许声音提醒
             mPushAgent.setNotificationPlaySound(MsgConstant.NOTIFICATION_PLAY_SDK_ENABLE);
             //设置客户端允许呼吸灯点亮

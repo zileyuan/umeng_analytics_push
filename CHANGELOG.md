@@ -1,3 +1,12 @@
+## 2.1.3
+
+- Upgrade the Umeng SDK
+- 升级友盟SDK
+- Increase the set resource package name (setResourcePackageName) in the initialization to improve the reach effect
+- 初始化中增加设置资源包名（setResourcePackageName），改善到达效果
+- Instructions for obfuscating packaging have been added to the instructions for use
+- 使用说明中增加了混淆打包的说明
+
 ## 2.1.2
 
 - Fix some code sample errors in README, thanks [wasabia](https://github.com/wasabia)
@@ -25,7 +34,7 @@
 
 ## 2.0.2
 
-- Upgrade the Youmeng SDK and update the Maven URL
+- Upgrade the Umeng SDK and update the Maven URL
 - 升级友盟SDK，更新Maven地址
 
 ## 2.0.1
