@@ -1,3 +1,12 @@
+## 2.1.5
+
+- Upgrade the Huawei Push SDK
+- 升级华为推送SDK
+## 2.1.4
+
+- Upgrade the Umeng SDK
+- 升级友盟SDK
+
 ## 2.1.3
 
 - Upgrade the Umeng SDK
