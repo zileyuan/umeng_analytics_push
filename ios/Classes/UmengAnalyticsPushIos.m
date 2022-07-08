@@ -29,9 +29,9 @@ NSDictionary *g_launchOptions;
         [UNUserNotificationCenter currentNotificationCenter].delegate=self;
         [UMessage registerForRemoteNotificationsWithLaunchOptions:g_launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
             if (granted) {
-                NSLog(@"================= PUSH授权成功 ====================");
+                NSLog(@"=============== PUSH授权成功 ==================");
             }else{
-                NSLog(@"================= PUSH拒绝授权 ====================");
+                NSLog(@"=============== PUSH拒绝授权 ==================");
             }
         }];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationFuncion:) name:@"umeng_analytics_push" object:nil];

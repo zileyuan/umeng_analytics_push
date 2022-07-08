@@ -31,8 +31,8 @@ public class MiPushRegistar {
                     result = true;
                 }
             }
-        } catch (Throwable var4) {
-            ALog.e("MiPushRegistar", "checkDevice", var4, new Object[0]);
+        } catch (Throwable throwable) {
+            ALog.e("MiPushRegistar", "checkDevice", throwable, new Object[0]);
         }
 
         ALog.d("MiPushRegistar", "checkDevice", new Object[]{"result", result});
@@ -51,8 +51,8 @@ public class MiPushRegistar {
                 BaseNotifyClickActivity.addNotifyListener(new MiPushRegistar.XiaoMiNotifyListener());
                 MiPushClient.registerPush(context, xiaomiId, xiaomiKey);
             }
-        } catch (Throwable var4) {
-            ALog.e("MiPushRegistar", "register", var4, new Object[0]);
+        } catch (Throwable throwable) {
+            ALog.e("MiPushRegistar", "register", throwable, new Object[0]);
         }
 
     }
@@ -60,8 +60,8 @@ public class MiPushRegistar {
     public static void unregister(Context context) {
         try {
             MiPushClient.unregisterPush(context);
-        } catch (Throwable var2) {
-            ALog.e("MiPushRegistar", "unregister", var2, new Object[0]);
+        } catch (Throwable throwable) {
+            ALog.e("MiPushRegistar", "unregister", throwable, new Object[0]);
         }
 
     }
@@ -80,7 +80,7 @@ public class MiPushRegistar {
             try {
                 MiPushMessage miPushMessage = (MiPushMessage)intent.getSerializableExtra("key_message");
                 msg = miPushMessage.getContent();
-            } catch (Exception var4) {
+            } catch (Exception e) {
             }
 
             ALog.i("MiPushRegistar", "parseMsgFromIntent", new Object[]{"msg", msg});

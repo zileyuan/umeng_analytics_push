@@ -1,3 +1,4 @@
+/// Wrap Message for Android&iOS
 class MessageModel {
   String displayType;
   Map<String, dynamic> extra;
@@ -18,6 +19,7 @@ class MessageModel {
       };
 }
 
+/// Umeng Push Message Body Content
 class MessageBodyModel {
   String afterOpen;
   String ticker;
