@@ -1,3 +1,7 @@
+## 2.1.6
+
+- Fix compile errors
+- 修复编译错误
 ## 2.1.5
 
 - Upgrade the Huawei Push SDK
