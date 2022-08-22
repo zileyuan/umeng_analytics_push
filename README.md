@@ -124,6 +124,8 @@ class MyFlutterApplication: FlutterApplication() {
         UmengAnalyticsPushFlutterAndroid.registerVivo(this)
         // Register Meizu Push (optional)
         UmengAnalyticsPushFlutterAndroid.registerMeizu(this, "meizu_app_id", "meizu_app_key")
+        // Register Honor Push (optional, need add other infomation in AndroidManifest.xml)
+        UmengAnalyticsPushFlutterAndroid.registerHonor(this)
     }
 }
 ```

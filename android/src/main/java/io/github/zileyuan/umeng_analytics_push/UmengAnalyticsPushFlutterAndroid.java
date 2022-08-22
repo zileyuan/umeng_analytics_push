@@ -17,6 +17,7 @@ import org.android.agoo.huawei.HuaWeiRegister;
 import org.android.agoo.mezu.MeizuRegister;
 import org.android.agoo.oppo.OppoRegister;
 import org.android.agoo.vivo.VivoRegister;
+import org.android.agoo.honor.HonorRegister;
 
 public class UmengAnalyticsPushFlutterAndroid {
 
@@ -118,6 +119,10 @@ public class UmengAnalyticsPushFlutterAndroid {
 
     public static void registerMeizu(Context context, String appId, String appKey) {
         MeizuRegister.register(context, appId, appKey);
+    }
+
+    public static void registerHonor(Context context) {
+        HonorRegister.register(context);
     }
 
     public static void rouseMainActivity(Context context) {
