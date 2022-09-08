@@ -1,3 +1,8 @@
+## 2.1.8
+
+- Solve the problem of possible flashback
+- 解决可能出现闪退的问题
+
 ## 2.1.7
 
 - Added Push channel for Honor manufacturers
